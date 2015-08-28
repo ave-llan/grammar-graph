@@ -1,0 +1,38 @@
+{
+  "name": "decision-graph",
+  "version": "0.0.0",
+  "description": "Takes a context-free grammar in JSON format and creates an interactive decision-making graph.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrleszcz/decision-graph.git"
+  },
+  "keywords": [
+    "graph",
+    "digraph",
+    "directed graph",
+    "decision-making graph",
+    "decision graph",
+    "decision tree",
+    "grammar",
+    "context-free grammar",
+    "nondeterministic",
+    "nfa",
+    "formal language"
+  ],
+  "author": "John Leszczynski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrleszcz/decision-graph/issues"
+  },
+  "homepage": "https://github.com/jrleszcz/decision-graph#readme",
+  "devDependencies": {
+    "tape": "^4.2.0"
+  }
+}
