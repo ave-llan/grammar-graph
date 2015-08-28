@@ -1,8 +1,8 @@
 Takes a context-free grammar in JSON format and creates an interactive decision-making graph.
 
 ## JSON format
-Input your grammar in a JSON object in the format:
-```js
+Input your grammar as a JSON object in the format:
+```JSON
 {
     "RuleName1": ["option1 secondword", "Nonterminal"],
   "Nonterminal": ["RuleName1 terminalOption2"]
@@ -12,7 +12,7 @@ Object properties define rules. Rules are an array of definition choices.
 Each array item is a chain of items seperated by spaces. If an item is also an object property, it is a nonterminal. Else, it is a terminal.
 
 Here is an example:
-```js
+```JSON
 {
         "Sentence": ["NounPhrase VerbPhrase"],
       "NounPhrase": ["the Noun", "the Noun RelativeClause"],
