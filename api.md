@@ -6,6 +6,7 @@
   * [new DecisionGraph()](#new_DecisionGraph_new)
   * [.addVertex(name, [typeAND])](#DecisionGraph+addVertex)
   * [.addEdge(v, w)](#DecisionGraph+addEdge)
+  * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph()
@@ -34,4 +35,15 @@ add edge v->w to the graph
 | --- | --- | --- |
 | v | <code>string</code> | the name of a vertex this edge points from |
 | w | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | the name of a vertex this edge points to or an array of vertex names. If vertex v is type AND, the order of w will be the exact order required. |
+
+<a name="DecisionGraph+adj"></a>
+### decisionGraph.adj(v) ⇒ <code>Array.&lt;string&gt;</code>
+get an array of all the vertices this vertex points to
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - an ordered list of all the vertices that v points to  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| v | <code>string</code> | the name of a vertex |
 
