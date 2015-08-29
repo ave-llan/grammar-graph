@@ -4,7 +4,8 @@
 
 * [DecisionGraph](#DecisionGraph)
   * [new DecisionGraph()](#new_DecisionGraph_new)
-  * [.addVertex(name, [typeAND])](#DecisionGraph+addVertex)
+  * [.addVertexAND(name)](#DecisionGraph+addVertexAND)
+  * [.addVertexOR(name)](#DecisionGraph+addVertexOR)
   * [.addEdge(v, w)](#DecisionGraph+addEdge)
   * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
@@ -16,18 +17,29 @@
 ### new DecisionGraph()
 creates a new DecisionGraph
 
-<a name="DecisionGraph+addVertex"></a>
-### decisionGraph.addVertex(name, [typeAND])
-add vertex to the graph. When moving through the decision graph, an AND vertex
-will require a visit down each of its outgoing edges, in order. An OR vertex
-will pick just one of its outgoing vertices, so order does not matter.
+<a name="DecisionGraph+addVertexAND"></a>
+### decisionGraph.addVertexAND(name)
+add AND vertex to the graph. When moving through the decision graph, an AND vertex
+will require a visit down each of its outgoing edges, in order. .
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**See**: [addVertexOR](#DecisionGraph+addVertexOR)  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| name | <code>string</code> |  | the name of this vertex |
-| [typeAND] | <code>string</code> | <code>true</code> | the type of this vertex: true=AND, false=OR. |
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | the name of this vertex |
+
+<a name="DecisionGraph+addVertexOR"></a>
+### decisionGraph.addVertexOR(name)
+add OR vertex to the graph. When moving through the decision graph, an OR vertex
+will pick just one of its outgoing vertices.
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**See**: [addVertexAND](#DecisionGraph+addVertexAND)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| name | <code>string</code> | the name of this vertex |
 
 <a name="DecisionGraph+addEdge"></a>
 ### decisionGraph.addEdge(v, w)
