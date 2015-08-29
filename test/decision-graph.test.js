@@ -7,30 +7,32 @@ test('DecisionGraph methods', function (t) {
   t.true(dg instanceof DecisionGraph)
   t.equal(dg.V(), 0)
 
-  dg.addVertexOR('NounPhrase')
+  dg.addVertexAND('Sentence')
   t.equal(dg.V(), 1)
+  t.deepEqual(dg.adj('Sentence'), [])
+  t.true(dg.isTerminal('Sentence'))
+  t.true(dg.isTypeAND('Sentence'))
+
+  dg.addVertexOR('NounPhrase')
+  t.equal(dg.V(), 2)
   t.deepEqual(dg.adj('NounPhrase'), [])
-  t.true(dg.isTerminal('NounPhrase'))
+  t.true(dg.isTerminal('Sentence'))
   t.false(dg.isTypeAND('NounPhrase'))
 
-  dg.addVertexAND('NP1')
-  t.equal(dg.V(), 2)
-  t.deepEqual(dg.adj('NP1'), [])
-  t.true(dg.isTypeAND('NP1'))
-
-  dg.addVertexAND('NP2')
-  t.equal(dg.V(), 3)
-  t.deepEqual(dg.adj('NP2'), [])
-  t.true(dg.isTypeAND('NP2'))
-
-  dg.addVertexOR('Noun')
-  dg.addVertexAND('RelativeClause')
-
-  var terminals = ['the', 'dog', 'cat', 'bird', 'squirrel']
-  terminals.forEach(function (terminal) {
-    dg.addVertexAND(terminal)
+  var ANDs = ['Sentence', '_NounPhrase1', '_NounPhrase2', '_VerbPhrase1',
+              'RelativeClause', 'the', 'that', 'dog', 'cat', 'bird', 'squirrel',
+              'befriended', 'loved', 'ate', 'attacked'
+              ]
+  ANDs.forEach(function (andVertex) {
+    dg.addVertexAND(andVertex)
   })
-  t.equal(dg.V(), 10)
+  t.equal(dg.V(), 17)
+
+  var ORs = ['VerbPhrase', 'Noun', 'Verb']
+  ORs.forEach(function (orVertex) {
+    dg.addVertexAND(orVertex)
+  })
+  t.equal(dg.V(), 20)
 
   t.end()
 })
