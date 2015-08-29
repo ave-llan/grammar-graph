@@ -20,7 +20,8 @@ creates a new DecisionGraph
 <a name="DecisionGraph+addVertexAND"></a>
 ### decisionGraph.addVertexAND(name)
 add AND vertex to the graph. When moving through the decision graph, an AND vertex
-will require a visit down each of its outgoing edges, in order. .
+will require a visit down each of its outgoing edges, in the order the edges were
+added.
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **See**: [addVertexOR](#DecisionGraph+addVertexOR)  
@@ -32,7 +33,7 @@ will require a visit down each of its outgoing edges, in order. .
 <a name="DecisionGraph+addVertexOR"></a>
 ### decisionGraph.addVertexOR(name)
 add OR vertex to the graph. When moving through the decision graph, an OR vertex
-will pick just one of its outgoing vertices.
+chooses just one of its outgoing vertices.
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **See**: [addVertexAND](#DecisionGraph+addVertexAND)  
