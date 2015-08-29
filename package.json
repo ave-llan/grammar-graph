@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "standard && tape test/**/*.test.js",
+    "docs": "jsdoc2md lib/**/*.js > api.md"
   },
   "repository": {
     "type": "git",
@@ -26,13 +27,19 @@
     "nfa",
     "formal language"
   ],
-  "author": "John Leszczynski",
+  "author": {
+    "name": "John Leszczynski",
+    "email": "jrleszczynski@gmail.com",
+    "url": "http://johnleszczynski.com"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/jrleszcz/decision-graph/issues"
   },
   "homepage": "https://github.com/jrleszcz/decision-graph#readme",
   "devDependencies": {
+    "jsdoc-to-markdown": "^1.1.1",
+    "standard": "^5.1.1",
     "tape": "^4.2.0"
   }
 }
