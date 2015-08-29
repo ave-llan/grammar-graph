@@ -34,5 +34,9 @@ test('DecisionGraph methods', function (t) {
   })
   t.equal(dg.V(), 20)
 
+  dg.addEdge('Sentence', ['NounPhrase', 'VerbPhrase'])
+  t.deepEqual(dg.adj('Sentence'), ['NounPhrase', 'VerbPhrase'])
+  t.false(dg.isTerminal('Sentence'))
+
   t.end()
 })
