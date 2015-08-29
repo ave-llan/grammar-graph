@@ -9,6 +9,7 @@
   * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
   * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
+  * [.isAND(v)](#DecisionGraph+isAND) ⇒ <code>boolean</code>
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph()
@@ -61,6 +62,17 @@ is this a termianl vertex (does it have no outgoing edges?)
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>boolean</code> - is this a terminal vertex  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| v | <code>string</code> | the name of a vertex |
+
+<a name="DecisionGraph+isAND"></a>
+### decisionGraph.isAND(v) ⇒ <code>boolean</code>
+is this a type AND vertex (and not a type OR)?
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**Returns**: <code>boolean</code> - is this a type AND vertex (and not a type OR)?  
 
 | Param | Type | Description |
 | --- | --- | --- |
