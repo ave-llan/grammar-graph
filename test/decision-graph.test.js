@@ -1,7 +1,7 @@
 var test = require('tape')
 var DecisionGraph = require('../lib/decision-graph.js')
 
-test('new DecisionGraph methods', function (t) {
+test('DecisionGraph methods', function (t) {
   var dg = new DecisionGraph()
 
   t.true(dg instanceof DecisionGraph)
