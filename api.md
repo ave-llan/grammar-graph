@@ -8,6 +8,7 @@
   * [.addEdge(v, w)](#DecisionGraph+addEdge)
   * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
+  * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph()
@@ -54,3 +55,14 @@ get the number of vertices in this graph
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>number</code> - the number of vertices in this graph  
+<a name="DecisionGraph+isTerminal"></a>
+### decisionGraph.isTerminal(v) ⇒ <code>boolean</code>
+is this a termianl vertex (does it have no outgoing edges?)
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**Returns**: <code>boolean</code> - is this a terminal vertex  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| v | <code>string</code> | the name of a vertex |
+
