@@ -7,6 +7,7 @@
   * [.addVertex(name, [typeAND])](#DecisionGraph+addVertex)
   * [.addEdge(v, w)](#DecisionGraph+addEdge)
   * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph()
@@ -47,3 +48,9 @@ get an array of all the vertices this vertex points to
 | --- | --- | --- |
 | v | <code>string</code> | the name of a vertex |
 
+<a name="DecisionGraph+V"></a>
+### decisionGraph.V() ⇒ <code>number</code>
+get the number of vertices in this graph
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**Returns**: <code>number</code> - the number of vertices in this graph  
