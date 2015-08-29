@@ -21,8 +21,7 @@ test('DecisionGraph methods', function (t) {
 
   var ANDs = ['Sentence', '_NounPhrase1', '_NounPhrase2', '_VerbPhrase1',
               'RelativeClause', 'the', 'that', 'dog', 'cat', 'bird', 'squirrel',
-              'befriended', 'loved', 'ate', 'attacked'
-              ]
+              'befriended', 'loved', 'ate', 'attacked']
   ANDs.forEach(function (andVertex) {
     dg.addVertexAND(andVertex)
   })
@@ -34,9 +33,31 @@ test('DecisionGraph methods', function (t) {
   })
   t.equal(dg.V(), 20)
 
-  dg.addEdge('Sentence', ['NounPhrase', 'VerbPhrase'])
+  dg.addEdge('Sentence', ['NounPhrase', 'VerbPhrase'], 'add edges as array')
   t.deepEqual(dg.adj('Sentence'), ['NounPhrase', 'VerbPhrase'])
   t.false(dg.isTerminal('Sentence'))
+
+  dg.addEdge('NounPhrase', '_NounPhrase1')
+  t.deepEqual(dg.adj('NounPhrase'), ['_NounPhrase1'])
+  t.false(dg.isTerminal('NounPhrase'))
+
+  dg.addEdge('NounPhrase', '_NounPhrase2')
+  t.deepEqual(dg.adj('NounPhrase'), ['_NounPhrase1', '_NounPhrase2'],
+    'add edges one by one as string')
+  t.false(dg.isTerminal('NounPhrase'))
+
+  dg.addEdge('VerbPhrase', ['Verb', '_VerbPhrase1'])
+  t.deepEqual(dg.adj('VerbPhrase'), ['Verb', '_VerbPhrase1'])
+
+  dg.addEdge('_NounPhrase1', ['the', 'Noun'])
+  dg.addEdge('_NounPhrase2', ['the', 'Noun', 'RelativeClause'])
+  dg.addEdge('_VerbPhrase1', ['Verb', 'Nounphrase'])
+  dg.addEdge('RelativeClause', ['that', 'Verbphrase'])
+  dg.addEdge('Noun', ['dog', 'cat', 'squirrel', 'bird'])
+  dg.addEdge('Verb', ['befriended', 'loved', 'ate', 'attacked'])
+
+  t.equal(dg.V(), 20)
+  t.true(dg.isTerminal('that'))
 
   t.end()
 })
