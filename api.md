@@ -11,7 +11,6 @@
   * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
   * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
   * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
-  * [.getVertex(v)](#DecisionGraph+getVertex) ⇒ <code>Object</code>
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph()
@@ -87,18 +86,6 @@ is this a type AND vertex (and not a type OR)?
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>boolean</code> - is this a type AND vertex (and not a type OR)?  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| v | <code>string</code> | the name of a vertex |
-
-<a name="DecisionGraph+getVertex"></a>
-### decisionGraph.getVertex(v) ⇒ <code>Object</code>
-get an object with properties describing the vertex
-
-**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
-**Returns**: <code>Object</code> - an object with properties [isTerminal](#DecisionGraph+isTerminal),
-[isTypeAND](#DecisionGraph+isTypeAND), and [adj](#DecisionGraph+adj)  
 
 | Param | Type | Description |
 | --- | --- | --- |

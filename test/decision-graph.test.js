@@ -58,6 +58,7 @@ test('DecisionGraph methods', function (t) {
 
   t.equal(dg.V(), 20)
   t.true(dg.isTerminal('that'))
+  t.false(dg.isTerminal('Verb'))
 
   t.end()
 })
