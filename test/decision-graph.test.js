@@ -19,21 +19,21 @@ test('DecisionGraph methods', function (t) {
   t.true(dg.isTerminal('Sentence'))
   t.false(dg.isTypeAND('NounPhrase'))
 
-  var ANDs = ['Sentence', '_NounPhrase1', '_NounPhrase2', '_VerbPhrase1',
+  var ANDs = ['_NounPhrase1', '_NounPhrase2', '_VerbPhrase1',
               'RelativeClause', 'the', 'that', 'dog', 'cat', 'bird', 'squirrel',
               'befriended', 'loved', 'ate', 'attacked']
   ANDs.forEach(function (andVertex) {
     dg.addVertexAND(andVertex)
   })
-  t.equal(dg.V(), 17)
+  t.equal(dg.V(), 16)
 
   var ORs = ['VerbPhrase', 'Noun', 'Verb']
   ORs.forEach(function (orVertex) {
     dg.addVertexAND(orVertex)
   })
-  t.equal(dg.V(), 20)
+  t.equal(dg.V(), 19)
 
-  dg.addEdge('Sentence', ['NounPhrase', 'VerbPhrase'], 'add edges as array')
+  dg.addEdge('Sentence', ['NounPhrase', 'VerbPhrase'])
   t.deepEqual(dg.adj('Sentence'), ['NounPhrase', 'VerbPhrase'])
   t.false(dg.isTerminal('Sentence'))
 
@@ -56,7 +56,7 @@ test('DecisionGraph methods', function (t) {
   dg.addEdge('Noun', ['dog', 'cat', 'squirrel', 'bird'])
   dg.addEdge('Verb', ['befriended', 'loved', 'ate', 'attacked'])
 
-  t.equal(dg.V(), 20)
+  t.equal(dg.V(), 19)
   t.true(dg.isTerminal('that'))
   t.false(dg.isTerminal('Verb'))
 
