@@ -60,5 +60,11 @@ test('DecisionGraph methods', function (t) {
   t.true(dg.isTerminal('that'))
   t.false(dg.isTerminal('Verb'))
 
+  // try to add nodes again and make sure V still == 19
+  dg.addVertexAND('Sentence')
+  t.equal(dg.V(), 19)
+  dg.addVertexOR('VerbPhrase')
+  t.equal(dg.V(), 19)
+
   t.end()
 })
