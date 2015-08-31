@@ -1,3 +1,10 @@
+## Classes
+<dl>
+<dt><a href="#DecisionGraph">DecisionGraph</a></dt>
+<dd></dd>
+<dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
+<dd></dd>
+</dl>
 <a name="DecisionGraph"></a>
 ## DecisionGraph
 **Kind**: global class  
@@ -91,3 +98,27 @@ is this a type AND vertex (and not a type OR)?
 | --- | --- | --- |
 | v | <code>string</code> | the name of a vertex |
 
+<a name="GuidedDecisionGraph"></a>
+## GuidedDecisionGraph
+**Kind**: global class  
+
+* [GuidedDecisionGraph](#GuidedDecisionGraph)
+  * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
+  * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
+
+<a name="new_GuidedDecisionGraph_new"></a>
+### new GuidedDecisionGraph(dg, start)
+step-by-step construction of a language from a decision graph
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| dg | <code>[DecisionGraph](#DecisionGraph)</code> | a Decision Graph that defines a grammar |
+| start | <code>string</code> | the name of a vertex in the decision graph |
+
+<a name="GuidedDecisionGraph+construction"></a>
+### guidedDecisionGraph.construction() ⇒ <code>Array.&lt;string&gt;</code>
+the current construction
+
+**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - a terminal symbol chain  
