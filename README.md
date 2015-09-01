@@ -40,6 +40,16 @@ guide.choices()        => []
 
 // at any point, you can check the current construction
 guide.construction()   => ['the', 'squirrel', 'ate', '']
+
+// pop off the previous choice to move back a step
+guide.pop()
+guide.choices()        => ['', 'the']
+
+// get an array of possible construction strings from the current state,
+// possibly including nonterminals which have not been expanded yet.
+guide.fullConstructs() => [ 'the dog ate',
+                            'the dog ate the Noun RelativeClause',
+                            'the dog ate the Noun' ]
 ```
 
 ## Docs
