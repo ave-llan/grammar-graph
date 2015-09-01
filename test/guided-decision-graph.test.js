@@ -60,5 +60,9 @@ test('GuidedDecisionGraph methods', function (t) {
   t.equal(guide.construction().join(' '),
     'the dog ate the cat that ate the bird that attacked the squirrel')
 
+  // throws errors when given a terminal which is not a valid next choice
+  t.throws(function () {guide.choose('the')}, Error)
+  t.throws(function () {guide.choose(' ')}, Error)
+
   t.end()
 })
