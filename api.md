@@ -19,6 +19,7 @@
   * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
   * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.epsilon()](#DecisionGraph+epsilon) ⇒ <code>string</code>
+  * [.guide(start)](#DecisionGraph+guide)
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph([epsilonSymbol])
@@ -111,6 +112,17 @@ get the string representing epsilon in this graph
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>string</code> - the string representing epsilon  
+<a name="DecisionGraph+guide"></a>
+### decisionGraph.guide(start)
+get a new GuidedDecisionGraph using this decision graph
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**See**: [GuidedDecisionGraph](#GuidedDecisionGraph)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
+
 <a name="GuidedDecisionGraph"></a>
 ## GuidedDecisionGraph
 **Kind**: global class  
@@ -131,7 +143,7 @@ step-by-step construction of a language from a decision graph
 | Param | Type | Description |
 | --- | --- | --- |
 | dg | <code>[DecisionGraph](#DecisionGraph)</code> | a Decision Graph that defines a grammar |
-| start | <code>string</code> | the name of a vertex in the decision graph that indicates this is an end of a construction. Defaults to the empty string. |
+| start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
 
 <a name="GuidedDecisionGraph+construction"></a>
 ### guidedDecisionGraph.construction() ⇒ <code>Array.&lt;string&gt;</code>
