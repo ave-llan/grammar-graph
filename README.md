@@ -1,9 +1,9 @@
 Takes a context-free grammar in JSON format and creates an interactive decision-making graph.
 
 ## Example
-Input a grammar in JSON format:
+Input a grammar in object or JSON format:
 ```js
-{
+var grammar = {
         "Sentence": ["NounPhrase VerbPhrase"],
       "NounPhrase": ["the Noun", "the Noun RelativeClause"],
       "VerbPhrase": ["Verb", "Verb NounPhrase"],
@@ -12,11 +12,37 @@ Input a grammar in JSON format:
             "Verb": ["befriended", "loved", "ate", "attacked"]
 }
 ```
-Starting with `Sentence` this example might generate:
-```
-the cat befriended the squirrel
-the cat ate the bird that attacked the squirrel
-the squirrel loved the dog that befriended the cat that ate the bird
+Using `parseGrammar()` (function to be created soon), automatically generate a `DecisionGraph`.
+
+```js
+var decisionGraph = parseGrammar(grammar)
+
+// make a guide from the newly created DecisionGraph, indicating the starting point
+var guide = new GuidedDecisionGraph(decisionGraph, 'Sentence')
+
+// get a list of possible first choices for your construction from the grammar
+guide.choices()       =>  ['the']
+
+// 'the' is our only choice, so choose it and see what the next choices are
+guide.choose('the')
+guide.choices()       =>  ['dog', 'cat', 'squirrel', 'bird']
+guide.choose('squirrel')
+
+// NounPhrase has two options in the grammar, and we could have picked either at this point
+// GuidedDecisionGraph keeps track of this, and offers us options from both paths
+guide.choices()       =>  ['that', 'befriended', 'loved', 'ate', 'attacked']
+guide.choose('ate')
+
+// the next set of choices includes the empty string, which indicates this could be
+// a valid end to a construction.
+guide.choices()        => ['', 'the']
+
+// choosing the empty string means the construction is finished and there are no more choices
+guide.choose('')
+guide.choices()        => []
+
+// at any point, you can check the current construction
+guide.construction()   => ['the', 'squirrel', 'ate']
 ```
 
 ## Docs
