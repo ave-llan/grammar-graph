@@ -162,6 +162,16 @@ possibly including nonterminals after the next terminal
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> - a list of possible constructions  
+**Example**  
+```js
+// guide is an in-progress GuidedDecisionGraph
+guide.construction()   => ['the', 'dog', 'ate']
+guide.choices()        => ['', 'the']
+guide.fullConstructs()
+ => [ 'the dog ate',
+      'the dog ate the Noun RelativeClause',
+      'the dog ate the Noun' ]
+```
 <a name="GuidedDecisionGraph+pop"></a>
 ### guidedDecisionGraph.pop() ⇒ <code>string</code>
 pop the last choice off the construction
