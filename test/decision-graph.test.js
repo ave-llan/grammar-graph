@@ -70,5 +70,13 @@ test('DecisionGraph methods', function (t) {
   t.throws(function () {dg.addEdge('Sentence', 'NotAVertex')}, Error)
   t.throws(function () {dg.addEdge('Sentence', ['cat', 'bat'])}, Error)
 
+  // check that the empty string is a terminal
+  t.true(dg.isTerminal(''))
+
+  // check that custom epsilon works
+  var otherDG = new DecisionGraph('epsilon')
+  t.true(otherDG.isTerminal('epsilon'))
+  t.throws(function () {otherDG.isTerminal('')}, Error)
+
   t.end()
 })
