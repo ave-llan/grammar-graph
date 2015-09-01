@@ -10,7 +10,7 @@
 **Kind**: global class  
 
 * [DecisionGraph](#DecisionGraph)
-  * [new DecisionGraph([epsilonSymbol=])](#new_DecisionGraph_new)
+  * [new DecisionGraph([epsilonSymbol])](#new_DecisionGraph_new)
   * [.addVertexAND(name)](#DecisionGraph+addVertexAND)
   * [.addVertexOR(name)](#DecisionGraph+addVertexOR)
   * [.addEdge(v, w)](#DecisionGraph+addEdge)
@@ -20,13 +20,13 @@
   * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
 
 <a name="new_DecisionGraph_new"></a>
-### new DecisionGraph([epsilonSymbol=])
+### new DecisionGraph([epsilonSymbol])
 creates a new DecisionGraph
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| [epsilonSymbol=] | <code>string</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [epsilonSymbol] | <code>string</code> | <code>&quot;\&quot;\&quot;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
 
 <a name="DecisionGraph+addVertexAND"></a>
 ### decisionGraph.addVertexAND(name)
