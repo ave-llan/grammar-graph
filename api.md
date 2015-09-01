@@ -120,6 +120,8 @@ get the string representing epsilon in this graph
   * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choices()](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choose(terminal)](#GuidedDecisionGraph+choose)
+  * [.fullConstructs()](#GuidedDecisionGraph+fullConstructs) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
 
 <a name="new_GuidedDecisionGraph_new"></a>
 ### new GuidedDecisionGraph(dg, start)
@@ -152,4 +154,22 @@ adds the given terminal to the construction
 | Param | Type | Description |
 | --- | --- | --- |
 | terminal | <code>string</code> | the name of a terminal vertex in the Decision Graph which is in the current set of possible choices. |
+
+<a name="GuidedDecisionGraph+fullConstructs"></a>
+### guidedDecisionGraph.fullConstructs() ⇒ <code>Array.&lt;string&gt;</code>
+get an array of possible construction strings from the current state,
+possibly including nonterminals after the next terminal
+
+**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - a list of possible constructions  
+<a name="GuidedDecisionGraph+pop"></a>
+### guidedDecisionGraph.pop() ⇒ <code>string</code>
+pop the last choice off the construction
+
+**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
+**Returns**: <code>string</code> - the last element of the construction that was
+submitted through [choose](#GuidedDecisionGraph+choose)  
+**Throws**:
+
+- throws an error if called when construction is empty
 
