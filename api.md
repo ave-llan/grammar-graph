@@ -105,6 +105,8 @@ is this a type AND vertex (and not a type OR)?
 * [GuidedDecisionGraph](#GuidedDecisionGraph)
   * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
   * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.choices()](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.choose(terminal)](#GuidedDecisionGraph+choose)
 
 <a name="new_GuidedDecisionGraph_new"></a>
 ### new GuidedDecisionGraph(dg, start)
@@ -122,3 +124,19 @@ the current construction
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> - a terminal symbol chain  
+<a name="GuidedDecisionGraph+choices"></a>
+### guidedDecisionGraph.choices() ⇒ <code>Array.&lt;string&gt;</code>
+returns an array of the possible next terminals
+
+**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - a terminal symbol chain  
+<a name="GuidedDecisionGraph+choose"></a>
+### guidedDecisionGraph.choose(terminal)
+adds the given terminal to the construction
+
+**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| terminal | <code>string</code> | the name of a terminal vertex in the Decision Graph which is in the current set of possible choices. |
+

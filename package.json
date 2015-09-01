@@ -42,5 +42,6 @@
     "jsdoc-to-markdown": "^1.1.1",
     "standard": "^5.1.1",
     "tape": "^4.2.0"
-  }
+  },
+  "dependencies": {}
 }
