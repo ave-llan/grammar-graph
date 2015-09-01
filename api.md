@@ -10,7 +10,7 @@
 <dt><a href="#reduceGrammar">reduceGrammar(grammar)</a> ⇒ <code>object</code></dt>
 <dd><p>reduces the rules of a grammar into a one to one form by assigning a name
 to all non-terminals. The end result is that each option on a rule with
-more than one choice will either be an AND-node or a terminal.</p>
+more than one choice will either be a single AND-rule or a single terminal.</p>
 </dd>
 </dl>
 <a name="DecisionGraph"></a>
@@ -215,7 +215,7 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 ## reduceGrammar(grammar) ⇒ <code>object</code>
 reduces the rules of a grammar into a one to one form by assigning a name
 to all non-terminals. The end result is that each option on a rule with
-more than one choice will either be an AND-node or a terminal.
+more than one choice will either be a single AND-rule or a single terminal.
 
 **Kind**: global function  
 **Returns**: <code>object</code> - the modified grammar object with newly created rules
