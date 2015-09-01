@@ -30,6 +30,9 @@ guide.choose('squirrel')
 guide.choices()       =>  ['that', 'befriended', 'loved', 'ate', 'attacked']
 guide.choose('ate')
 
+// at any point, you can check the current construction
+guide.construction()   => ['the', 'squirrel', 'ate']
+
 // the next set of choices includes the empty string, which indicates this could be
 // a valid end to a construction.
 guide.choices()        => ['', 'the']
@@ -37,9 +40,6 @@ guide.choices()        => ['', 'the']
 // choosing the empty string means the construction is finished
 guide.choose('')
 guide.choices()        => []
-
-// at any point, you can check the current construction
-guide.construction()   => ['the', 'squirrel', 'ate', '']
 
 // pop off the previous choice to move back a step
 guide.pop()
