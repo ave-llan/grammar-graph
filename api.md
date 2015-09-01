@@ -238,8 +238,8 @@ var grammar = {
 reduceGrammar(grammar)   =>
 {
       NounPhrase: ['_NounPhrase_1', '_NounPhrase_2'],
-   _NounPhrase_1: ['the Noun']
-   _NounPhrase_2: ['the Noun RelativeClause']
+   _NounPhrase_1: ['the Noun'],
+   _NounPhrase_2: ['the Noun RelativeClause'],
   RelativeClause: ['that VerbPhrase'],
             Noun: ['dog', 'cat', 'bird']
 }
