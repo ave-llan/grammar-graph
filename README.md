@@ -21,13 +21,13 @@ var decisionGraph = parseGrammar(grammar)
 var guide = new GuidedDecisionGraph(decisionGraph, 'Sentence')
 
 // get a list of possible first choices for your construction from the grammar
-guide.choices()       =>  ['the']
+guide.choices()        =>  ['the']
 
 // 'the' is our only choice, so choose it and see what the next choices are
 guide.choose('the')
-guide.choices()       =>  ['dog', 'cat', 'squirrel', 'bird']
+guide.choices()        =>  ['dog', 'cat', 'squirrel', 'bird']
 guide.choose('squirrel')
-guide.choices()       =>  ['that', 'befriended', 'loved', 'ate', 'attacked']
+guide.choices()        =>  ['that', 'befriended', 'loved', 'ate', 'attacked']
 guide.choose('ate')
 
 // at any point, you can check the current construction
@@ -48,8 +48,8 @@ guide.choices()        => ['', 'the']
 // get an array of possible construction strings from the current state,
 // possibly including nonterminals which have not been expanded yet.
 guide.fullConstructs() => [ 'the dog ate',
-                            'the dog ate the Noun RelativeClause',
-                            'the dog ate the Noun' ]
+                            'the dog ate the Noun',
+                            'the dog ate the Noun RelativeClause' ]
 ```
 
 ## Docs
