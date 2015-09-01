@@ -1,4 +1,4 @@
-Takes a context-free grammar in JSON format and creates an interactive decision-making graph.
+Takes a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) and creates an interactive decision-making graph.
 
 ## Example
 Input a grammar in object or JSON format:
