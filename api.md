@@ -5,6 +5,14 @@
 <dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
 <dd></dd>
 </dl>
+## Functions
+<dl>
+<dt><a href="#reduceGrammar">reduceGrammar(grammar)</a> ⇒ <code>object</code></dt>
+<dd><p>reduces the rules of a grammar into a one to one form by assigning a name
+to all non-terminals. The end result is that each option on a rule with
+more than one choice will either be an AND-node or a terminal.</p>
+</dd>
+</dl>
 <a name="DecisionGraph"></a>
 ## DecisionGraph
 **Kind**: global class  
@@ -203,3 +211,35 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 
 - throws an error if called when construction is empty
 
+<a name="reduceGrammar"></a>
+## reduceGrammar(grammar) ⇒ <code>object</code>
+reduces the rules of a grammar into a one to one form by assigning a name
+to all non-terminals. The end result is that each option on a rule with
+more than one choice will either be an AND-node or a terminal.
+
+**Kind**: global function  
+**Returns**: <code>object</code> - the modified grammar object with newly created rules
+as needed. New rules will be given the name of their parent rule
+surrounded by underscores and followed by a number.  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| grammar | <code>object</code> | an object representing a grammar |
+
+**Example**  
+```js
+var grammar = {
+      NounPhrase: ['the Noun', 'the Noun RelativeClause'],
+  RelativeClause: ['that VerbPhrase'],
+            Noun: ['dog', 'cat', 'bird']
+}
+
+reduceGrammar(grammar)   =>
+{
+      NounPhrase: ['_NounPhrase_1', '_NounPhrase_2'],
+   _NounPhrase_1: ['the Noun']
+   _NounPhrase_2: ['the Noun RelativeClause']
+  RelativeClause: ['that VerbPhrase'],
+            Noun: ['dog', 'cat', 'bird']
+}
+```
