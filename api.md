@@ -7,7 +7,7 @@
 </dl>
 ## Functions
 <dl>
-<dt><a href="#reduceGrammar">reduceGrammar(grammar)</a> ⇒ <code>object</code></dt>
+<dt><a href="#reduceGrammar">reduceGrammar(grammar, [seperator])</a> ⇒ <code>object</code></dt>
 <dd><p>reduces the rules of a grammar into a one to one form by assigning a name
 to all non-terminals. The end result is that each option on a rule with
 more than one choice will either be a single AND-rule or a single terminal.</p>
@@ -212,7 +212,7 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 - throws an error if called when construction is empty
 
 <a name="reduceGrammar"></a>
-## reduceGrammar(grammar) ⇒ <code>object</code>
+## reduceGrammar(grammar, [seperator]) ⇒ <code>object</code>
 reduces the rules of a grammar into a one to one form by assigning a name
 to all non-terminals. The end result is that each option on a rule with
 more than one choice will either be a single AND-rule or a single terminal.
@@ -222,9 +222,10 @@ more than one choice will either be a single AND-rule or a single terminal.
 as needed. New rules will be given the name of their parent rule
 surrounded by underscores and followed by a number.  
 
-| Param | Type | Description |
-| --- | --- | --- |
-| grammar | <code>object</code> | an object representing a grammar |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| grammar | <code>object</code> |  | an object representing a grammar |
+| [seperator] | <code>string</code> &#124; <code>RegExp</code> | <code>&quot;/\\s+/&quot;</code> | how tokens will be divided in rules |
 
 **Example**  
 ```js
