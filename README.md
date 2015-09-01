@@ -1,20 +1,16 @@
 Takes a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) and creates an interactive decision-making graph.
 
 ## Example
-Input a grammar in object or JSON format:
 ```js
 var grammar = {
-        "Sentence": ["NounPhrase VerbPhrase"],
-      "NounPhrase": ["the Noun", "the Noun RelativeClause"],
-      "VerbPhrase": ["Verb", "Verb NounPhrase"],
-  "RelativeClause": ["that VerbPhrase"],
-            "Noun": ["dog", "cat", "bird", "squirrel"],
-            "Verb": ["befriended", "loved", "ate", "attacked"]
+        Sentence: ['NounPhrase VerbPhrase'],
+      NounPhrase: ['the Noun', 'the Noun RelativeClause'],
+      VerbPhrase: ['Verb', 'Verb NounPhrase'],
+  RelativeClause: ['that VerbPhrase'],
+            Noun: ['dog', 'cat', 'bird', 'squirrel'],
+            Verb: ['befriended', 'loved', 'ate', 'attacked']
 }
-```
-Using `parseGrammar()` (function to be created soon), automatically generate a `DecisionGraph`.
 
-```js
 var dg = new DecisionGraph(grammar)
 
 // make a guide from the newly created DecisionGraph, indicating the starting point
@@ -69,7 +65,7 @@ npm run docs
 ```
 
 
-## JSON format
+## Grammar format
 Input your grammar as a JSON object in this format:
 ```js
 {
