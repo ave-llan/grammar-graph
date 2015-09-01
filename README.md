@@ -27,9 +27,6 @@ guide.choices()       =>  ['the']
 guide.choose('the')
 guide.choices()       =>  ['dog', 'cat', 'squirrel', 'bird']
 guide.choose('squirrel')
-
-// NounPhrase has two options in the grammar, and we could have picked either at this point
-// GuidedDecisionGraph keeps track of this, and offers us options from both paths
 guide.choices()       =>  ['that', 'befriended', 'loved', 'ate', 'attacked']
 guide.choose('ate')
 
@@ -37,7 +34,7 @@ guide.choose('ate')
 // a valid end to a construction.
 guide.choices()        => ['', 'the']
 
-// choosing the empty string means the construction is finished and there are no more choices
+// choosing the empty string means the construction is finished
 guide.choose('')
 guide.choices()        => []
 
