@@ -66,7 +66,7 @@ npm run docs
 
 
 ## Grammar format
-Input your grammar as a JSON object in this format:
+Input your grammar as an object in this format:
 ```js
 {
     "RuleName1": ["option1 secondword", "Nonterminal"],
