@@ -157,7 +157,7 @@ adds the given terminal to the construction
 
 <a name="GuidedDecisionGraph+fullConstructs"></a>
 ### guidedDecisionGraph.fullConstructs() ⇒ <code>Array.&lt;string&gt;</code>
-get an array of possible construction strings from the current state,
+get a sorted array of possible construction strings from the current state,
 possibly including nonterminals after the next terminal
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
@@ -169,8 +169,8 @@ guide.construction()   => ['the', 'dog', 'ate']
 guide.choices()        => ['', 'the']
 guide.fullConstructs()
  => [ 'the dog ate',
-      'the dog ate the Noun RelativeClause',
-      'the dog ate the Noun' ]
+      'the dog ate the Noun'
+      'the dog ate the Noun RelativeClause' ]
 ```
 <a name="GuidedDecisionGraph+pop"></a>
 ### guidedDecisionGraph.pop() ⇒ <code>string</code>
