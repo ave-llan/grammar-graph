@@ -112,6 +112,8 @@ test('GuidedDecisionGraph methods', function (t) {
   guide.choose('')
   t.deepEqual(guide.choices(), [])
   t.true(guide.isComplete())
+  t.deepEqual(guide.fullConstructs(),
+    ['the dog ate the cat that ate the bird that attacked'])
 
   t.end()
 })
