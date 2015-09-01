@@ -51,8 +51,8 @@ test('DecisionGraph methods', function (t) {
 
   dg.addEdge('_NounPhrase1', ['the', 'Noun'])
   dg.addEdge('_NounPhrase2', ['the', 'Noun', 'RelativeClause'])
-  dg.addEdge('_VerbPhrase1', ['Verb', 'Nounphrase'])
-  dg.addEdge('RelativeClause', ['that', 'Verbphrase'])
+  dg.addEdge('_VerbPhrase1', ['Verb', 'NounPhrase'])
+  dg.addEdge('RelativeClause', ['that', 'VerbPhrase'])
   dg.addEdge('Noun', ['dog', 'cat', 'squirrel', 'bird'])
   dg.addEdge('Verb', ['befriended', 'loved', 'ate', 'attacked'])
 
@@ -65,6 +65,10 @@ test('DecisionGraph methods', function (t) {
   t.equal(dg.V(), 19)
   dg.addVertexOR('VerbPhrase')
   t.equal(dg.V(), 19)
+
+  // check that error is thrown if adding edge to vertex which is not present
+  t.throws(function () {dg.addEdge('Sentence', 'NotAVertex')}, Error)
+  t.throws(function () {dg.addEdge('Sentence', ['cat', 'bat'])}, Error)
 
   t.end()
 })
