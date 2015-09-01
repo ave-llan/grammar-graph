@@ -1,6 +1,6 @@
 var test = require('tape')
 var DecisionGraph = require('../lib/decision-graph.js')
-// var GuidedDecisionGraph = require('../lib/guided-decision-graph.js')
+var GuidedDecisionGraph = require('../lib/guided-decision-graph.js')
 
 test('GuidedDecisionGraph methods', function (t) {
   var dg = new DecisionGraph()
@@ -15,7 +15,7 @@ test('GuidedDecisionGraph methods', function (t) {
   })
 
   ORs.forEach(function (orVertex) {
-    dg.addVertexAND(orVertex)
+    dg.addVertexOR(orVertex)
   })
 
   dg.addEdge('Sentence', ['NounPhrase', 'VerbPhrase'])
@@ -23,12 +23,42 @@ test('GuidedDecisionGraph methods', function (t) {
   dg.addEdge('VerbPhrase', ['Verb', '_VerbPhrase_1'])
   dg.addEdge('_NounPhrase_1', ['the', 'Noun'])
   dg.addEdge('_NounPhrase_2', ['the', 'Noun', 'RelativeClause'])
-  dg.addEdge('_VerbPhrase_1', ['Verb', 'Nounphrase'])
-  dg.addEdge('RelativeClause', ['that', 'Verbphrase'])
+  dg.addEdge('_VerbPhrase_1', ['Verb', 'NounPhrase'])
+  dg.addEdge('RelativeClause', ['that', 'VerbPhrase'])
   dg.addEdge('Noun', ['dog', 'cat', 'squirrel', 'bird'])
   dg.addEdge('Verb', ['befriended', 'loved', 'ate', 'attacked'])
 
   t.equal(dg.V(), 19)
+
+  var guide = new GuidedDecisionGraph(dg, 'Sentence')
+  t.deepEqual(guide.construction(), [])
+  t.deepEqual(guide.choices(), ['the'])
+
+  guide.choose('the')
+  t.deepEqual(guide.construction(), ['the'])
+  t.deepEqual(guide.choices().sort(), ['dog', 'cat', 'squirrel', 'bird'].sort())
+
+  guide.choose('dog')
+  t.deepEqual(guide.construction(), ['the', 'dog'])
+  t.deepEqual(guide.choices().sort(),
+    ['befriended', 'loved', 'attacked', 'ate', 'that'].sort())
+
+  guide.choose('ate')
+  t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
+  t.deepEqual(guide.choices().sort(),
+    ['', 'the'].sort())
+
+  guide.choose('the')
+  t.deepEqual(guide.construction(), ['the', 'dog', 'ate', 'the'])
+  t.deepEqual(guide.choices().sort(),
+    ['dog', 'cat', 'squirrel', 'bird'].sort())
+
+  ;'cat that ate the bird that attacked the squirrel'.split(' ').forEach(function (t) {
+    guide.choose(t)
+  })
+
+  t.equal(guide.construction().join(' '),
+    'the dog ate the cat that ate the bird that attacked the squirrel')
 
   t.end()
 })
