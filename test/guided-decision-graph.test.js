@@ -76,5 +76,13 @@ test('GuidedDecisionGraph methods', function (t) {
   t.throws(function () {guide.choose('the')}, Error)
   t.throws(function () {guide.choose(' ')}, Error)
 
+  t.equal(guide.pop(), 'squirrel')
+  t.equal(guide.pop(), 'the')
+  t.deepEqual(guide.choices().sort(),
+    ['the', ''].sort())
+
+  guide.choose('')
+  t.deepEqual(guide.choices(), [])
+
   t.end()
 })
