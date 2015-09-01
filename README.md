@@ -15,15 +15,15 @@ var grammar = {
 Using `parseGrammar()` (function to be created soon), automatically generate a `DecisionGraph`.
 
 ```js
-var decisionGraph = parseGrammar(grammar)
+var dg = new DecisionGraph(grammar)
 
 // make a guide from the newly created DecisionGraph, indicating the starting point
-var guide = new GuidedDecisionGraph(decisionGraph, 'Sentence')
+var guide = dg.guide('Sentence')
 
-// get a list of possible first choices for your construction from the grammar
+// the guide expands all non-terminals to give choices for the first terminal
 guide.choices()        =>  ['the']
 
-// 'the' is our only choice, so choose it and see what the next choices are
+// 'the' is the only choice at the start of this grammar
 guide.choose('the')
 guide.choices()        =>  ['dog', 'cat', 'squirrel', 'bird']
 guide.choose('squirrel')
