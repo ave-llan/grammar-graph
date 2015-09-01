@@ -33,6 +33,7 @@ test('GuidedDecisionGraph methods', function (t) {
   var guide = new GuidedDecisionGraph(dg, 'Sentence')
   t.deepEqual(guide.construction(), [])
   t.deepEqual(guide.choices(), ['the'])
+  t.false(guide.isComplete())
   t.throws(function () {guide.pop()}, Error,
     'Should not be able to pop empty construction')
   t.deepEqual(guide.fullConstructs(),
@@ -42,6 +43,7 @@ test('GuidedDecisionGraph methods', function (t) {
   guide.choose('the')
   t.deepEqual(guide.construction(), ['the'])
   t.deepEqual(guide.choices().sort(), ['dog', 'cat', 'squirrel', 'bird'].sort())
+  t.false(guide.isComplete())
   t.deepEqual(guide.fullConstructs(),
     [ 'the bird RelativeClause VerbPhrase',
       'the bird VerbPhrase',
@@ -109,6 +111,7 @@ test('GuidedDecisionGraph methods', function (t) {
 
   guide.choose('')
   t.deepEqual(guide.choices(), [])
+  t.true(guide.isComplete())
 
   t.end()
 })

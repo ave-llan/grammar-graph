@@ -130,6 +130,7 @@ get a new GuidedDecisionGraph using this decision graph
 * [GuidedDecisionGraph](#GuidedDecisionGraph)
   * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
   * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.isComplete()](#GuidedDecisionGraph+isComplete) ⇒ <code>boolean</code>
   * [.choices()](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choose(terminal)](#GuidedDecisionGraph+choose)
   * [.fullConstructs()](#GuidedDecisionGraph+fullConstructs) ⇒ <code>Array.&lt;string&gt;</code>
@@ -151,6 +152,13 @@ the current construction
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> - a terminal symbol chain  
+<a name="GuidedDecisionGraph+isComplete"></a>
+### guidedDecisionGraph.isComplete() ⇒ <code>boolean</code>
+is the current construction a valid, complete construction from the starting
+nonterminal? ie, does the construction end in epsilon?
+
+**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
+**Returns**: <code>boolean</code> - is the construction complete  
 <a name="GuidedDecisionGraph+choices"></a>
 ### guidedDecisionGraph.choices() ⇒ <code>Array.&lt;string&gt;</code>
 returns an array of the possible next terminals
