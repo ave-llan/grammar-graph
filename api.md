@@ -18,6 +18,7 @@
   * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
   * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
   * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
+  * [.epsilon()](#DecisionGraph+epsilon) ⇒ <code>string</code>
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph([epsilonSymbol])
@@ -26,7 +27,7 @@ creates a new DecisionGraph
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| [epsilonSymbol] | <code>string</code> | <code>&quot;\&quot;\&quot;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
+| [epsilonSymbol] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
 
 <a name="DecisionGraph+addVertexAND"></a>
 ### decisionGraph.addVertexAND(name)
@@ -104,25 +105,32 @@ is this a type AND vertex (and not a type OR)?
 | --- | --- | --- |
 | v | <code>string</code> | the name of a vertex |
 
+<a name="DecisionGraph+epsilon"></a>
+### decisionGraph.epsilon() ⇒ <code>string</code>
+get the string representing epsilon in this graph
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**Returns**: <code>string</code> - the string representing epsilon  
 <a name="GuidedDecisionGraph"></a>
 ## GuidedDecisionGraph
 **Kind**: global class  
 
 * [GuidedDecisionGraph](#GuidedDecisionGraph)
-  * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
+  * [new GuidedDecisionGraph(dg, start, [epsilonSymbol])](#new_GuidedDecisionGraph_new)
   * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choices()](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choose(terminal)](#GuidedDecisionGraph+choose)
 
 <a name="new_GuidedDecisionGraph_new"></a>
-### new GuidedDecisionGraph(dg, start)
+### new GuidedDecisionGraph(dg, start, [epsilonSymbol])
 step-by-step construction of a language from a decision graph
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| dg | <code>[DecisionGraph](#DecisionGraph)</code> | a Decision Graph that defines a grammar |
-| start | <code>string</code> | the name of a vertex in the decision graph |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| dg | <code>[DecisionGraph](#DecisionGraph)</code> |  | a Decision Graph that defines a grammar |
+| start | <code>string</code> |  | the name of a vertex in the decision graph |
+| [epsilonSymbol] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
 
 <a name="GuidedDecisionGraph+construction"></a>
 ### guidedDecisionGraph.construction() ⇒ <code>Array.&lt;string&gt;</code>
