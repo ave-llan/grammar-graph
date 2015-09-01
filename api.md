@@ -116,21 +116,20 @@ get the string representing epsilon in this graph
 **Kind**: global class  
 
 * [GuidedDecisionGraph](#GuidedDecisionGraph)
-  * [new GuidedDecisionGraph(dg, start, [epsilonSymbol])](#new_GuidedDecisionGraph_new)
+  * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
   * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choices()](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choose(terminal)](#GuidedDecisionGraph+choose)
 
 <a name="new_GuidedDecisionGraph_new"></a>
-### new GuidedDecisionGraph(dg, start, [epsilonSymbol])
+### new GuidedDecisionGraph(dg, start)
 step-by-step construction of a language from a decision graph
 
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| dg | <code>[DecisionGraph](#DecisionGraph)</code> |  | a Decision Graph that defines a grammar |
-| start | <code>string</code> |  | the name of a vertex in the decision graph |
-| [epsilonSymbol] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
+| Param | Type | Description |
+| --- | --- | --- |
+| dg | <code>[DecisionGraph](#DecisionGraph)</code> | a Decision Graph that defines a grammar |
+| start | <code>string</code> | the name of a vertex in the decision graph that indicates this is an end of a construction. Defaults to the empty string. |
 
 <a name="GuidedDecisionGraph+construction"></a>
 ### guidedDecisionGraph.construction() ⇒ <code>Array.&lt;string&gt;</code>
