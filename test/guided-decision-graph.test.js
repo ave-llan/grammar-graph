@@ -35,20 +35,46 @@ test('GuidedDecisionGraph methods', function (t) {
   t.deepEqual(guide.choices(), ['the'])
   t.throws(function () {guide.pop()}, Error,
     'Should not be able to pop empty construction')
+  t.deepEqual(guide.fullConstructs(),
+    ['the Noun RelativeClause VerbPhrase',
+     'the Noun VerbPhrase'])
 
   guide.choose('the')
   t.deepEqual(guide.construction(), ['the'])
   t.deepEqual(guide.choices().sort(), ['dog', 'cat', 'squirrel', 'bird'].sort())
+  t.deepEqual(guide.fullConstructs(),
+    [ 'the bird RelativeClause VerbPhrase',
+      'the bird VerbPhrase',
+      'the cat RelativeClause VerbPhrase',
+      'the cat VerbPhrase',
+      'the dog RelativeClause VerbPhrase',
+      'the dog VerbPhrase',
+      'the squirrel RelativeClause VerbPhrase',
+      'the squirrel VerbPhrase' ])
 
   guide.choose('dog')
   t.deepEqual(guide.construction(), ['the', 'dog'])
   t.deepEqual(guide.choices().sort(),
     ['befriended', 'loved', 'attacked', 'ate', 'that'].sort())
+  t.deepEqual(guide.fullConstructs(),
+    [ 'the dog ate',
+      'the dog ate NounPhrase',
+      'the dog attacked',
+      'the dog attacked NounPhrase',
+      'the dog befriended',
+      'the dog befriended NounPhrase',
+      'the dog loved',
+      'the dog loved NounPhrase',
+      'the dog that VerbPhrase VerbPhrase' ])
 
   guide.choose('ate')
   t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
   t.deepEqual(guide.choices().sort(),
     ['', 'the'].sort())
+  t.deepEqual(guide.fullConstructs(),
+    [ 'the dog ate',
+      'the dog ate the Noun',
+      'the dog ate the Noun RelativeClause' ])
 
   t.equal(guide.pop(), 'ate')
   t.deepEqual(guide.construction(), ['the', 'dog'])
