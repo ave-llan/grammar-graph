@@ -45,6 +45,20 @@ guide.construction()   => ['the', 'squirrel', 'ate', '']
 ## Docs
 [View the api documentation here.](api.md)
 
+
+## Development
+
+To run eslint and tape tests:
+```
+npm test
+```
+
+To generate api documentation for [api.md](api.md):
+```
+npm run docs
+```
+
+
 ## JSON format
 Input your grammar as a JSON object in this format:
 ```js
