@@ -39,7 +39,7 @@ guide.choose('')
 guide.choices()        => []
 
 // at any point, you can check the current construction
-guide.construction()   => ['the', 'squirrel', 'ate']
+guide.construction()   => ['the', 'squirrel', 'ate', '']
 ```
 
 ## Docs
