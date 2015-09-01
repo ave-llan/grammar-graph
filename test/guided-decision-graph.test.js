@@ -33,12 +33,24 @@ test('GuidedDecisionGraph methods', function (t) {
   var guide = new GuidedDecisionGraph(dg, 'Sentence')
   t.deepEqual(guide.construction(), [])
   t.deepEqual(guide.choices(), ['the'])
+  t.throws(function () {guide.pop()}, Error,
+    'Should not be able to pop empty construction')
 
   guide.choose('the')
   t.deepEqual(guide.construction(), ['the'])
   t.deepEqual(guide.choices().sort(), ['dog', 'cat', 'squirrel', 'bird'].sort())
 
   guide.choose('dog')
+  t.deepEqual(guide.construction(), ['the', 'dog'])
+  t.deepEqual(guide.choices().sort(),
+    ['befriended', 'loved', 'attacked', 'ate', 'that'].sort())
+
+  guide.choose('ate')
+  t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
+  t.deepEqual(guide.choices().sort(),
+    ['', 'the'].sort())
+
+  t.equal(guide.pop(), 'ate')
   t.deepEqual(guide.construction(), ['the', 'dog'])
   t.deepEqual(guide.choices().sort(),
     ['befriended', 'loved', 'attacked', 'ate', 'that'].sort())
