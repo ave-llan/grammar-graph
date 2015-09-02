@@ -1,4 +1,4 @@
-Takes a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar) and creates an interactive decision-making graph.
+Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar). The grammar is converted into a decision-making graph, and a Guide keeps track of all possible states that the non-deterministic grammar might be in during construction.
 
 ## Example
 ```js
