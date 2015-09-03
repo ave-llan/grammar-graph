@@ -45,7 +45,7 @@ test('GuidedDecisionGraph methods', function (t) {
   t.false(guide.isComplete())
   t.throws(function () {guide.pop()}, Error,
     'Should not be able to pop empty construction')
-  t.deepEqual(guide.fullConstructs(),
+  t.deepEqual(guide.constructs(),
     ['the Noun RelativeClause VerbPhrase',
      'the Noun VerbPhrase'])
 
@@ -53,7 +53,7 @@ test('GuidedDecisionGraph methods', function (t) {
   t.deepEqual(guide.construction(), ['the'])
   t.deepEqual(guide.choices().sort(), ['dog', 'cat', 'squirrel', 'bird'].sort())
   t.false(guide.isComplete())
-  t.deepEqual(guide.fullConstructs(),
+  t.deepEqual(guide.constructs(),
     [ 'the bird RelativeClause VerbPhrase',
       'the bird VerbPhrase',
       'the cat RelativeClause VerbPhrase',
@@ -67,7 +67,7 @@ test('GuidedDecisionGraph methods', function (t) {
   t.deepEqual(guide.construction(), ['the', 'dog'])
   t.deepEqual(guide.choices().sort(),
     ['befriended', 'loved', 'attacked', 'ate', 'that'].sort())
-  t.deepEqual(guide.fullConstructs(),
+  t.deepEqual(guide.constructs(),
     [ 'the dog ate',
       'the dog ate NounPhrase',
       'the dog attacked',
@@ -82,7 +82,7 @@ test('GuidedDecisionGraph methods', function (t) {
   t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
   t.deepEqual(guide.choices().sort(),
     ['', 'the'].sort())
-  t.deepEqual(guide.fullConstructs(),
+  t.deepEqual(guide.constructs(),
     [ 'the dog ate',
       'the dog ate the Noun',
       'the dog ate the Noun RelativeClause' ])
@@ -121,7 +121,7 @@ test('GuidedDecisionGraph methods', function (t) {
   guide.choose('')
   t.deepEqual(guide.choices(), [])
   t.true(guide.isComplete())
-  t.deepEqual(guide.fullConstructs(),
+  t.deepEqual(guide.constructs(),
     ['the dog ate the cat that ate the bird that attacked'])
 
   t.end()

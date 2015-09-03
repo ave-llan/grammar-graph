@@ -204,7 +204,7 @@ get a new GuidedDecisionGraph using this decision graph
   * [.isComplete()](#GuidedDecisionGraph+isComplete) ⇒ <code>boolean</code>
   * [.choices()](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choose(terminal)](#GuidedDecisionGraph+choose)
-  * [.fullConstructs()](#GuidedDecisionGraph+fullConstructs) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.constructs()](#GuidedDecisionGraph+constructs) ⇒ <code>Array.&lt;string&gt;</code>
   * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
 
 <a name="new_GuidedDecisionGraph_new"></a>
@@ -246,8 +246,8 @@ adds the given terminal to the construction
 | --- | --- | --- |
 | terminal | <code>string</code> | the name of a terminal vertex in the Decision Graph which is in the current set of possible choices. |
 
-<a name="GuidedDecisionGraph+fullConstructs"></a>
-### guidedDecisionGraph.fullConstructs() ⇒ <code>Array.&lt;string&gt;</code>
+<a name="GuidedDecisionGraph+constructs"></a>
+### guidedDecisionGraph.constructs() ⇒ <code>Array.&lt;string&gt;</code>
 get a sorted array of possible construction strings from the current state,
 possibly including nonterminals after the next terminal
 
@@ -258,7 +258,7 @@ possibly including nonterminals after the next terminal
 // guide is an in-progress GuidedDecisionGraph
 guide.construction()   => ['the', 'dog', 'ate']
 guide.choices()        => ['', 'the']
-guide.fullConstructs()
+guide.constructs()
  => [ 'the dog ate',
       'the dog ate the Noun'
       'the dog ate the Noun RelativeClause' ]
