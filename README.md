@@ -1,6 +1,6 @@
 Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar). Like a regular expression which generates strings instead of matching them.
 
-## Example & Walk-through
+## Example
 
 Install the npm module.
 ```
