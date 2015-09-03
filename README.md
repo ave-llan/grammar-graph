@@ -32,12 +32,14 @@ graph.vertices()       =>
   'dog', 'cat', 'bird', 'squirrel', 'befriended', 'loved', 'ate',
   'attacked', 'the' ]
 ```
-Where did `'_NounPhrase_1', '_NounPhrase_2', '_VerbPhrase_1'` come from? Look at the definition of `NounPhrase` in the original grammar declaration. Both options contained multiple symbols, and the constructor has automatically created a name for each one. So `NounPhrase: ['the Noun', 'the Noun RelativeClause']` is expanded to:
+Where did `'_NounPhrase_1'`, `'_NounPhrase_2'`, and `'_VerbPhrase_1'` come from? Look at the definition of `NounPhrase` in the original grammar declaration. Both options contained multiple symbols, and the constructor has automatically created a name for each combination. In the case of `VerbPhrase`, only the second option contained multiple symbols, so only one extra name is needed. The automatic expansion of the original `NounPhrase` and `VerbPhrase` definitions result in the following equivalent definitions:
 ```js
 {
-      NounPhrase: ['_NounPhrase_1', '_NounPhrase_2'],
-   _NounPhrase_1: ['the Noun'],
-   _NounPhrase_2: ['the Noun RelativeClause'],
+     NounPhrase: ['_NounPhrase_1', '_NounPhrase_2'],
+     VerbPhrase: ['Verb', '_VerbPhrase_1'],
+  _NounPhrase_1: ['the Noun'],
+  _NounPhrase_2: ['the Noun RelativeClause'],
+  _VerbPhrase_1: ['Verb NounPhrase']
 }
 ```
 
