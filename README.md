@@ -1,4 +1,4 @@
-Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar). The grammar is converted into a decision-making graph, and a Guide keeps track of all possible states that the non-deterministic grammar might be in during construction.
+Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar). The grammar is converted into a decision-making graph, and a Guide keeps track of all possible states that the non-deterministic grammar might be in during constructionp.
 
 ## Example
 ```js
@@ -48,23 +48,6 @@ guide.fullConstructs() => [ 'the dog ate',
                             'the dog ate the Noun RelativeClause' ]
 ```
 
-## Docs
-[View the api documentation here.](api.md)
-
-
-## Development
-
-To run eslint and tape tests:
-```
-npm test
-```
-
-To generate api documentation for [api.md](api.md):
-```
-npm run docs
-```
-
-
 ## Grammar format
 Input your grammar as an object in this format:
 ```js
@@ -77,6 +60,20 @@ Object properties define rules. Rules are an array of definition choices.
 Each array item is a chain of items seperated by spaces. If an item is also an object property, it is a nonterminal. Else, it is a terminal.
 
 
+## Docs
+[View the api documentation here.](api.md)
+
+## Development
+
+To run eslint and tape tests:
+```
+npm test
+```
+
+To generate api documentation for [api.md](api.md):
+```
+npm run docs
+```
 
 ## Credit
 This module is based on Alex Shkotin's [Graph representation of context-free grammars](http://arxiv.org/pdf/cs/0703015.pdf).
