@@ -1,10 +1,12 @@
 {
-  "name": "decision-graph",
-  "version": "0.0.0",
-  "description": "Takes a context-free grammar in JSON format and creates an interactive decision-making graph.",
+  "name": "grammar-graph",
+  "version": "1.0.0",
+  "description": "Takes a context-free grammar and converts it into a decision-making graph.
+  Can produce Guides which generate valid sentences from the grammar.",
   "main": "index.js",
   "directories": {
-    "test": "test"
+    "lib":"./lib",
+    "test": "./test"
   },
   "scripts": {
     "test": "standard && tape test/**/*.test.js | faucet",
