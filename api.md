@@ -2,6 +2,8 @@
 <dl>
 <dt><a href="#DecisionGraph">DecisionGraph</a></dt>
 <dd></dd>
+<dt><a href="#GrammarGraph">GrammarGraph</a></dt>
+<dd></dd>
 <dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
 <dd></dd>
 </dl>
@@ -148,6 +150,45 @@ get a new GuidedDecisionGraph using this decision graph
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **See**: [GuidedDecisionGraph](#GuidedDecisionGraph)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
+
+<a name="GrammarGraph"></a>
+## GrammarGraph
+**Kind**: global class  
+
+* [GrammarGraph](#GrammarGraph)
+  * [new GrammarGraph(grammar, [seperator], [epsilonSymbol])](#new_GrammarGraph_new)
+  * [.vertices()](#GrammarGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.guide(start)](#GrammarGraph+guide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+
+<a name="new_GrammarGraph_new"></a>
+### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
+creates a new GrammarGraph which can generate guides.
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| grammar | <code>object</code> |  | an object representing a grammar. See example below. |
+| [seperator] | <code>string</code> &#124; <code>RegExp</code> | <code>&quot;/\\s+/&quot;</code> | how tokens will be divided in rules |
+| [epsilonSymbol] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
+
+<a name="GrammarGraph+vertices"></a>
+### grammarGraph.vertices() ⇒ <code>Array.&lt;string&gt;</code>
+get an array of vertex names in the graph
+
+**Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - the vertex names in this graph  
+**See**: [vertices](#DecisionGraph+vertices)  
+<a name="GrammarGraph+guide"></a>
+### grammarGraph.guide(start) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+get a new GuidedDecisionGraph using this decision graph
+
+**Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
+**Returns**: <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code> - a new guide from the provided start point  
+**See**: [GuidedDecisionGraph](#GuidedDecisionGraph) for the methods available on the Guide  
 
 | Param | Type | Description |
 | --- | --- | --- |
