@@ -7,6 +7,9 @@
 </dl>
 ## Functions
 <dl>
+<dt><a href="#parseGrammar">parseGrammar(grammar, [seperator])</a> ⇒ <code><a href="#DecisionGraph">DecisionGraph</a></code></dt>
+<dd><p>parse a grammar given as an object and compile it into a decision graph</p>
+</dd>
 <dt><a href="#reduceGrammar">reduceGrammar(grammar, [seperator])</a> ⇒ <code>object</code></dt>
 <dd><p>reduces the rules of a grammar into a one to one form by assigning a name
 to all non-terminals. The end result is that each option on a rule with
@@ -25,8 +28,10 @@ more than one choice will either be a single AND-rule or a single terminal.</p>
   * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
   * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
+  * [.isVertex(v)](#DecisionGraph+isVertex) ⇒ <code>boolean</code>
   * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.epsilon()](#DecisionGraph+epsilon) ⇒ <code>string</code>
+  * [.vertices()](#DecisionGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.guide(start)](#DecisionGraph+guide)
 
 <a name="new_DecisionGraph_new"></a>
@@ -93,11 +98,22 @@ get the number of vertices in this graph
 **Returns**: <code>number</code> - the number of vertices in this graph  
 <a name="DecisionGraph+isTerminal"></a>
 ### decisionGraph.isTerminal(v) ⇒ <code>boolean</code>
-is this a termianl vertex (does it have no outgoing edges?)
+is this a terminal vertex (does it have no outgoing edges?)
 Epsilon returns true to indicate the end of a construction.
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>boolean</code> - is this a terminal vertex  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| v | <code>string</code> | the name of a vertex |
+
+<a name="DecisionGraph+isVertex"></a>
+### decisionGraph.isVertex(v) ⇒ <code>boolean</code>
+is this the name of a vertex in the graph?
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**Returns**: <code>boolean</code> - is this a vertex in the graph  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -120,6 +136,12 @@ get the string representing epsilon in this graph
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>string</code> - the string representing epsilon  
+<a name="DecisionGraph+vertices"></a>
+### decisionGraph.vertices() ⇒ <code>Array.&lt;string&gt;</code>
+get an array of vertex names
+
+**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - the vertex names in this graph  
 <a name="DecisionGraph+guide"></a>
 ### decisionGraph.guide(start)
 get a new GuidedDecisionGraph using this decision graph
@@ -210,6 +232,18 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 **Throws**:
 
 - throws an error if called when construction is empty
+
+<a name="parseGrammar"></a>
+## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>
+parse a grammar given as an object and compile it into a decision graph
+
+**Kind**: global function  
+**Returns**: <code>[DecisionGraph](#DecisionGraph)</code> - the grammar converted into a decision graph  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| grammar | <code>object</code> |  | an object representing a grammar |
+| [seperator] | <code>string</code> &#124; <code>RegExp</code> | <code>&quot;/\\s+/&quot;</code> | how tokens will be divided in rules |
 
 <a name="reduceGrammar"></a>
 ## reduceGrammar(grammar, [seperator]) ⇒ <code>object</code>
