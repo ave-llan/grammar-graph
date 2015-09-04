@@ -34,7 +34,6 @@ more than one choice will either be a single AND-rule or a single terminal.</p>
   * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.epsilon()](#DecisionGraph+epsilon) ⇒ <code>string</code>
   * [.vertices()](#DecisionGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.guide(start)](#DecisionGraph+guide)
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph([epsilonSymbol])
@@ -144,17 +143,6 @@ get an array of vertex names
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> - the vertex names in this graph  
-<a name="DecisionGraph+guide"></a>
-### decisionGraph.guide(start)
-get a new GuidedDecisionGraph using this decision graph
-
-**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
-**See**: [GuidedDecisionGraph](#GuidedDecisionGraph)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
-
 <a name="GrammarGraph"></a>
 ## GrammarGraph
 **Kind**: global class  
