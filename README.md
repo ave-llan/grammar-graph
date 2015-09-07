@@ -123,6 +123,13 @@ Each array item is a chain of items seperated by spaces. If an item is also an o
 
 ## Development
 
+Clone the git repository and install development dependencies:
+```
+git clone https://github.com/jrleszcz/grammar-graph.git
+cd grammar-graph
+npm install
+```
+
 To run eslint and tape tests:
 ```
 npm test
