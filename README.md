@@ -1,6 +1,6 @@
 Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar). Like a regular expression which generates strings instead of matching them.
 
-## Context-free Grammar Representation
+## Grammar
 A context-free grammar is a list of rules.  Here is a grammar with eight rules that builds creatures like this:
 
 `~~(^__^)~~` or `~~(-______-)~~` or `~~(*_*)~~`.
@@ -60,14 +60,14 @@ Arm Head Arm        // Arm      => ~~
 ```
 
 
-## Example Usage
+## Grammar Graph Guide Example
 
 Install the npm module.
 ```
 npm install grammar-graph
 ```
 
-Require GrammarGraph, input a grammar, and construct a new graph. See [grammar format](https://github.com/jrleszcz/grammar-graph#grammar-format) below for details on how a grammar works.
+Require GrammarGraph, input a grammar, and construct a new graph. See [grammar format](https://github.com/jrleszcz/grammar-graph#grammar) below for details on how a grammar works.
 ```js
 var GrammarGraph = require('grammar-graph')
 
