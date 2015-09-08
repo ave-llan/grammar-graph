@@ -1,6 +1,66 @@
 Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar). Like a regular expression which generates strings instead of matching them.
 
-## Example
+## Context-free Grammar Representation
+A context-free grammar is a list of rules.  Here is a grammar with eight rules that builds creatures like this:
+
+`~~(^__^)~~` or `~~(-______-)~~` or `~~(*_*)~~`.
+
+```js
+{
+  Creature: ['Arm Head Arm'],
+      Head: ['( Face )'],
+      Face: ['HappyFace', 'ZenFace', 'SleepyFace'],
+ HappyFace: ['^ Mouth ^'],
+   ZenFace: ['- Mouth -'],
+SleepyFace: ['* Mouth *'],
+     Mouth: ['_', '_ Mouth'],
+       Arm: ['~~']
+}
+```
+
+#### Rules
+A rule simply means to replace a word like `Creature` with its definition. If we are [constructing](https://github.com/jrleszcz/grammar-graph#building-a-creature) a sentence with the Creature grammar and come across the word `Head`, we will replace it with its definition: `( Face )`. Some rules have multiple options, such as a `Face` which can be rewritten as `HappyFace`, `ZenFace`, or `SleepyFace`.
+
+More formally, a grammar is an object consisting of key-value pairs, with each [non-terminal symbol](https://github.com/jrleszcz/grammar-graph#non-terminal-symbols) pointing to an array of one or more [symbol chains](https://github.com/jrleszcz/grammar-graph#symbol-chains) choices for this non-terminal.
+
+#### Symbol Chains
+`Arm Head Arm` and `( Face )` are symbol chains. By default, each symbol is seperated by white-space, so both of these symbol chains are made up of three symbols: `Arm, Head, Arm` and `(, Face, )`.
+
+#### Terminal Symbols
+If a symbol has no definition in the grammar, it is a terminal. The six terminal symbols in the creature grammar are: `(, ), ^, *, _, ~~`. These are the actual building blocks of the language, and are the only symbols that will make it into a final construction.
+
+#### Non-terminal Symbols
+If a symbol has a definition in the grammar, it is non-terminal and can be broken down further. A non-terminal's definition is an array of one or more symbol chains indicating possible choices for this rule.
+```
+{
+  RuleName: ['I am this', 'or this', 'or could be this'],
+ RuleName2: ['I mean only one thing']
+}
+```
+#### Recursive definitions
+Recursive definitions are what make a grammar interesting and powerful. The creature grammar has only one recursive definition: `Mouth: ['_', '_ Mouth']`. This allows creatures to have mouths of one character if we immediately choose the first option, or up to infinite characters if we always choose the second option.
+
+Do not define a non-terminal to equal only itself.  This will not work: `Mouth: ['Mouth']`.
+
+#### Building a Creature
+When constructing from a grammar, you need to indicate a starting point.  In this case it only makes sense to start from `Creature`. Let's break down `Creature` until we are left with only terminal symbols.
+```
+// construction     // replacement on this step
+
+Creature            // Creature => Arm Head Arm
+Arm Head Arm        // Arm      => ~~
+~~Head Arm          // Head     => ( Face )
+~~(Face) Arm        // Face     => ZenFace
+~~(ZenFace) Arm     // Mouth    => _ Mouth
+~~(-Mouth-) Arm     // Mouth    => _ Mouth
+~~(-_Mouth-) Arm    // Mouth    => _ Mouth
+~~(-__Mouth-) Arm   // Mouth    => _
+~~(-___-) Arm       // Arm      => ~~
+~~(-___-)~~
+```
+
+
+## Example Usage
 
 Install the npm module.
 ```
@@ -104,65 +164,6 @@ guide.pop()            => ''
 guide.choices()        => ['', 'the']
 guide.pop()            => 'ate'
 guide.choices()        => ['that', 'befriended', 'loved', 'ate', 'attacked']
-```
-
-## Grammar format
-A context-free grammar is a list of rules.  Here is a grammar with eight rules that builds creatures like this:
-
-`~~(^__^)~~` or `~~(-______-)~~` or `~~(*_*)~~`.
-
-```js
-{
-  Creature: ['Arm Head Arm'],
-      Head: ['( Face )'],
-      Face: ['HappyFace', 'ZenFace', 'SleepyFace'],
- HappyFace: ['^ Mouth ^'],
-   ZenFace: ['- Mouth -'],
-SleepyFace: ['* Mouth *'],
-     Mouth: ['_', '_ Mouth'],
-       Arm: ['~~']
-}
-```
-
-#### Rules
-A rule simply means to replace a word like `Creature` with its definition. If we are [constructing](https://github.com/jrleszcz/grammar-graph#building-a-creature) a sentence with the Creature grammar and come across the word `Head`, we will replace it with its definition: `( Face )`. Some rules have multiple options, such as a `Face` which can be rewritten as `HappyFace`, `ZenFace`, or `SleepyFace`.
-
-More formally, a grammar is an object consisting of key-value pairs, with each [non-terminal symbol](https://github.com/jrleszcz/grammar-graph#non-terminal-symbols) pointing to an array of one or more [symbol chains](https://github.com/jrleszcz/grammar-graph#symbol-chains) choices for this non-terminal.
-
-#### Symbol Chains
-`Arm Head Arm` and `( Face )` are symbol chains. By default, each symbol is seperated by white-space, so both of these symbol chains are made up of three symbols: `Arm, Head, Arm` and `(, Face, )`.
-
-#### Terminal Symbols
-If a symbol has no definition in the grammar, it is a terminal. The six terminal symbols in the creature grammar are: `(, ), ^, *, _, ~~`. These are the actual building blocks of the language, and are the only symbols that will make it into a final construction.
-
-#### Non-terminal Symbols
-If a symbol has a definition in the grammar, it is non-terminal and can be broken down further. A non-terminal's definition is an array of one or more symbol chains indicating possible choices for this rule.
-```
-{
-  RuleName: ['I am this', 'or this', 'or could be this'],
- RuleName2: ['I mean only one thing']
-}
-```
-#### Recursive definitions
-Recursive definitions are what make a grammar interesting and powerful. The creature grammar has only one recursive definition: `Mouth: ['_', '_ Mouth']`. This allows creatures to have mouths of one character if we immediately choose the first option, or up to infinite characters if we always choose the second option.
-
-Do not define a non-terminal to equal only itself.  This will not work: `Mouth: ['Mouth']`.
-
-#### Building a Creature
-When constructing from a grammar, you need to indicate a starting point.  In this case it only makes sense to start from `Creature`. Let's break down `Creature` until we are left with only terminal symbols.
-```
-// construction     // replacement on this step
-
-Creature            // Creature => Arm Head Arm
-Arm Head Arm        // Arm      => ~~
-~~Head Arm          // Head     => ( Face )
-~~(Face) Arm        // Face     => ZenFace
-~~(ZenFace) Arm     // Mouth    => _ Mouth
-~~(-Mouth-) Arm     // Mouth    => _ Mouth
-~~(-_Mouth-) Arm    // Mouth    => _ Mouth
-~~(-__Mouth-) Arm   // Mouth    => _
-~~(-___-) Arm       // Arm      => ~~
-~~(-___-)~~
 ```
 
 ## Docs
