@@ -124,6 +124,11 @@ SleepyFace: ['* Mouth *'],
 }
 ```
 
+#### Rules
+A rule simply means to replace a word like `Creature` with its definition. If we are [constructing](https://github.com/jrleszcz/grammar-graph#building-a-creature) a sentence with the Creature grammar and come across the word `Head`, we will replace it with its definition: `( Face )`. Some rules have multiple options, such as a `Face` which can be rewritten as `HappyFace`, `ZenFace`, or `SleepyFace`.
+
+More formally, a grammar is an object consisting of key-value pairs, with each [non-terminal symbol](https://github.com/jrleszcz/grammar-graph#non-terminal-symbols) pointing to an array of one or more [symbol chains](https://github.com/jrleszcz/grammar-graph#symbol-chains) choices for this non-terminal.
+
 #### Symbol Chains
 `Arm Head Arm` and `( Face )` are symbol chains. By default, each symbol is seperated by white-space, so both of these symbol chains are made up of three symbols: `Arm, Head, Arm` and `(, Face, )`.
 
@@ -146,6 +151,8 @@ Do not define a non-terminal to equal only itself.  This will not work: `Mouth: 
 #### Building a Creature
 When constructing from a grammar, you need to indicate a starting point.  In this case it only makes sense to start from `Creature`. Let's break down `Creature` until we are left with only terminal symbols.
 ```
+// construction     // replacement on this step
+
 Creature            // Creature => Arm Head Arm
 Arm Head Arm        // Arm      => ~~
 ~~Head Arm          // Head     => ( Face )
