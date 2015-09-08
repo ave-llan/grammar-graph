@@ -7,7 +7,7 @@ Install the npm module.
 npm install grammar-graph
 ```
 
-Require GrammarGraph, input a grammar, and construct a new graph. See [grammar format](https://github.com/jrleszcz/grammar-graph#grammar-format) below for details on inputting a grammar.
+Require GrammarGraph, input a grammar, and construct a new graph. See [grammar format](https://github.com/jrleszcz/grammar-graph#grammar-format) below for details on how a grammar works.
 ```js
 var GrammarGraph = require('grammar-graph')
 
@@ -107,16 +107,54 @@ guide.choices()        => ['that', 'befriended', 'loved', 'ate', 'attacked']
 ```
 
 ## Grammar format
-Input your grammar as an object in this format:
-```js
+Here is a grammar that builds creatures like this: `~~(^__^)~~` or `~~(-______-)~~`.
+
+```
 {
-    "RuleName1": ["option1 secondword", "Nonterminal"],
-  "Nonterminal": ["RuleName1 terminalOption2"]
+  Creature: ['Arm Head Arm'],
+      Head: ['( Face )'],
+      Face: ['HappyFace', 'ZenFace', 'SleepyFace'],
+ HappyFace: ['^ Mouth ^'],
+   ZenFace: ['- Mouth -'],
+SleepyFace: ['* Mouth *'],
+     Mouth: ['_', '_ Mouth'],
+       Arm: ['~~']
 }
 ```
-Object properties define rules. Rules are an array of definition choices.
-Each array item is a chain of items seperated by spaces. If an item is also an object property, it is a nonterminal. Else, it is a terminal.
 
+#### Symbol Chains
+`Arm Head Arm` and `( Face )` are symbol chains. By default, each symbol is seperated by white-space, so both of these symbol chains are made up of three symbols: `Arm, Head, Arm` and `(, Face, )`.
+
+#### Terminal Symbols
+If a symbol has no definition in the grammar, it is a terminal. The six terminal symbols in the creature grammar are: `(, ), ^, *, _, ~~`. These are the actual building blocks of the language, and are the only symbols that will make it into a final construction.
+
+#### Non-terminal Symbols
+If a symbol has a definition in the grammar, it is non-terminal and can be broken down further. A non-terminal's definition is an array of one or more symbol chains indicating possible choices for this rule.
+```
+{
+  RuleName: ['I am this', 'or this', 'or even this'],
+ RuleName2: ['I mean only one thing']
+}
+```
+#### Recursive definitions
+Recursive definitions are what make a grammar interesting and powerful. The creature grammar has only one recursive definition: `Mouth: ['_', '_ Mouth']`. This allows creatures to have mouths of one character if we immediately choose the first option, or up to infinite characters if we always choose the second option.
+
+Do not define a non-terminal to equal only itself.  This will not work: `Mouth: ['Mouth']`.
+
+#### Building a Creature
+When constructing from a grammar, you need to indicate a starting point.  In this case it only makes sense to start from `Creature`. Let's break down `Creature` until we are left with only terminal symbols.
+```
+Creature            // Creature => Arm Head Arm
+Arm Head Arm        // Arm      => ~~
+~~Head Arm          // Head     => ( Face )
+~~(Face) Arm        // Face     => ZenFace
+~~(ZenFace) Arm     // Mouth    => _ Mouth
+~~(-Mouth-) Arm     // Mouth    => _ Mouth
+~~(-_Mouth-) Arm    // Mouth    => _ Mouth
+~~(-__Mouth-) Arm   // Mouth    => _
+~~(-___-) Arm       // Arm      => ~~
+~~(-___-)~~
+```
 
 ## Docs
 [View the api documentation here.](api.md)
