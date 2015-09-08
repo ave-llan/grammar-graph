@@ -107,7 +107,7 @@ guide.choices()        => ['that', 'befriended', 'loved', 'ate', 'attacked']
 ```
 
 ## Grammar format
-Here is a grammar that builds creatures like this: `~~(^__^)~~` or `~~(-______-)~~`.
+A context-free grammar is a list of rules.  Here is a grammar that builds creatures like this: `~~(^__^)~~` or `~~(-______-)~~` or `~~(*_*)~~`.
 
 ```
 {
@@ -132,7 +132,7 @@ If a symbol has no definition in the grammar, it is a terminal. The six terminal
 If a symbol has a definition in the grammar, it is non-terminal and can be broken down further. A non-terminal's definition is an array of one or more symbol chains indicating possible choices for this rule.
 ```
 {
-  RuleName: ['I am this', 'or this', 'or even this'],
+  RuleName: ['I am this', 'or this', 'or could be this'],
  RuleName2: ['I mean only one thing']
 }
 ```
