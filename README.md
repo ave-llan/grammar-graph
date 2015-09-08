@@ -107,9 +107,11 @@ guide.choices()        => ['that', 'befriended', 'loved', 'ate', 'attacked']
 ```
 
 ## Grammar format
-A context-free grammar is a list of rules.  Here is a grammar that builds creatures like this: `~~(^__^)~~` or `~~(-______-)~~` or `~~(*_*)~~`.
+A context-free grammar is a list of rules.  Here is a grammar with eight rules that builds creatures like this:
 
-```
+`~~(^__^)~~` or `~~(-______-)~~` or `~~(*_*)~~`.
+
+```js
 {
   Creature: ['Arm Head Arm'],
       Head: ['( Face )'],
