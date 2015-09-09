@@ -7,7 +7,7 @@ Install the npm module.
 npm install grammar-graph
 ```
 
-Require GrammarGraph, input a grammar, and construct a new graph. See [grammar format](https://github.com/jrleszcz/grammar-graph#grammar) below for details on how a grammar works.
+Require GrammarGraph, input a grammar, and construct a new graph. See [grammar format](https://github.com/jrleszcz/grammar-graph#grammar) for details on how a grammar works.
 ```js
 var GrammarGraph = require('grammar-graph')
 
