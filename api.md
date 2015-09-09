@@ -150,6 +150,8 @@ get an array of vertex names
 * [GrammarGraph](#GrammarGraph)
   * [new GrammarGraph(grammar, [seperator], [epsilonSymbol])](#new_GrammarGraph_new)
   * [.vertices()](#GrammarGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
+  * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.guide(start)](#GrammarGraph+guide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
 
 <a name="new_GrammarGraph_new"></a>
@@ -170,6 +172,30 @@ get an array of vertex names in the graph
 **Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> - the vertex names in this graph  
 **See**: [vertices](#DecisionGraph+vertices)  
+<a name="GrammarGraph+adj"></a>
+### grammarGraph.adj(v) ⇒ <code>Array.&lt;string&gt;</code>
+get an array of all the vertices this vertex points to
+
+**Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> - an ordered list of all the vertices that v points to  
+**See**: [adj](#DecisionGraph+adj)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| v | <code>string</code> | the name of a vertex |
+
+<a name="GrammarGraph+isTypeAND"></a>
+### grammarGraph.isTypeAND(v) ⇒ <code>boolean</code>
+is this a type AND vertex (and not a type OR)?
+
+**Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
+**Returns**: <code>boolean</code> - is this a type AND vertex (and not a type OR)?  
+**See**: [isTypeAND](#DecisionGraph+isTypeAND)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| v | <code>string</code> | the name of a vertex |
+
 <a name="GrammarGraph+guide"></a>
 ### grammarGraph.guide(start) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
 get a new GuidedDecisionGraph using this decision graph

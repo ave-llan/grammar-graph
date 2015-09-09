@@ -24,6 +24,12 @@ test('GrammarGraph', function (t) {
   var guide = graph.guide('NounPhrase')
   t.true(guide instanceof GuidedDecisionGraph)
 
+  t.deepEqual(graph.adj('bird'), [])
+  t.deepEqual(graph.adj('RelativeClause'), ['that', 'VerbPhrase'])
+
+  t.true(graph.isTypeAND('loved'))
+  t.false(graph.isTypeAND('NounPhrase'))
+
   t.end()
 
 })
