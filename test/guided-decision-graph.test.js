@@ -1,6 +1,7 @@
 var test = require('tape')
 var DecisionGraph = require('../lib/decision-graph.js')
 var GuidedDecisionGraph = require('../lib/guided-decision-graph.js')
+var GrammarGraph = require('../lib/grammar-graph.js')
 
 test('GuidedDecisionGraph methods', function (t) {
   var dg = new DecisionGraph()
@@ -123,6 +124,78 @@ test('GuidedDecisionGraph methods', function (t) {
   t.true(guide.isComplete())
   t.deepEqual(guide.constructs(),
     ['the dog ate the cat that ate the bird that attacked'])
+
+  t.end()
+})
+
+test('GuidedDecisionGraph nDeep choices', function (t) {
+  var g = {
+    Sentence: ['NounPhrase VerbPhrase'],
+    NounPhrase: ['the Noun', 'the Noun RelativeClause'],
+    VerbPhrase: ['Verb', 'Verb NounPhrase'],
+    RelativeClause: ['that VerbPhrase'],
+    Noun: ['dog', 'cat', 'bird', 'squirrel'],
+    Verb: ['befriended', 'loved', 'ate', 'attacked']
+  }
+  var graph = new GrammarGraph(g)
+  var guide = graph.guide('Sentence')
+
+  t.deepEqual(guide.choices(), ['the'])
+  t.deepEqual(guide.choices(1), ['the'])
+  t.deepEqual(guide.choices(2).sort(),
+    [['the', 'dog'], ['the', 'cat'], ['the', 'squirrel'], ['the', 'bird']].sort())
+  guide.choose('the')
+  guide.choose('dog')
+  guide.choose('ate')
+  t.deepEqual(guide.choices(3).sort(),
+    [ [ '' ],
+      [ 'the', 'squirrel', 'that' ],
+      [ 'the', 'squirrel', '' ],
+      [ 'the', 'bird', 'that' ],
+      [ 'the', 'bird', '' ],
+      [ 'the', 'cat', 'that' ],
+      [ 'the', 'cat', '' ],
+      [ 'the', 'dog', 'that' ],
+      [ 'the', 'dog', '' ] ].sort())
+
+  t.deepEqual(guide.choices(5).sort(),
+    [ [ '' ],
+      [ 'the', 'squirrel', 'that', 'attacked', '' ],
+      [ 'the', 'squirrel', 'that', 'attacked', 'the' ],
+      [ 'the', 'squirrel', 'that', 'ate', '' ],
+      [ 'the', 'squirrel', 'that', 'ate', 'the' ],
+      [ 'the', 'squirrel', 'that', 'loved', '' ],
+      [ 'the', 'squirrel', 'that', 'loved', 'the' ],
+      [ 'the', 'squirrel', 'that', 'befriended', '' ],
+      [ 'the', 'squirrel', 'that', 'befriended', 'the' ],
+      [ 'the', 'squirrel', '' ],
+      [ 'the', 'bird', 'that', 'attacked', '' ],
+      [ 'the', 'bird', 'that', 'attacked', 'the' ],
+      [ 'the', 'bird', 'that', 'ate', '' ],
+      [ 'the', 'bird', 'that', 'ate', 'the' ],
+      [ 'the', 'bird', 'that', 'loved', '' ],
+      [ 'the', 'bird', 'that', 'loved', 'the' ],
+      [ 'the', 'bird', 'that', 'befriended', '' ],
+      [ 'the', 'bird', 'that', 'befriended', 'the' ],
+      [ 'the', 'bird', '' ],
+      [ 'the', 'cat', 'that', 'attacked', '' ],
+      [ 'the', 'cat', 'that', 'attacked', 'the' ],
+      [ 'the', 'cat', 'that', 'ate', '' ],
+      [ 'the', 'cat', 'that', 'ate', 'the' ],
+      [ 'the', 'cat', 'that', 'loved', '' ],
+      [ 'the', 'cat', 'that', 'loved', 'the' ],
+      [ 'the', 'cat', 'that', 'befriended', '' ],
+      [ 'the', 'cat', 'that', 'befriended', 'the' ],
+      [ 'the', 'cat', '' ],
+      [ 'the', 'dog', 'that', 'attacked', '' ],
+      [ 'the', 'dog', 'that', 'attacked', 'the' ],
+      [ 'the', 'dog', 'that', 'ate', '' ],
+      [ 'the', 'dog', 'that', 'ate', 'the' ],
+      [ 'the', 'dog', 'that', 'loved', '' ],
+      [ 'the', 'dog', 'that', 'loved', 'the' ],
+      [ 'the', 'dog', 'that', 'befriended', '' ],
+      [ 'the', 'dog', 'that', 'befriended', 'the' ],
+      [ 'the', 'dog', '' ] ].sort())
 
   t.end()
 })

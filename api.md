@@ -216,10 +216,10 @@ get a new GuidedDecisionGraph using this decision graph
   * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
   * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
   * [.isComplete()](#GuidedDecisionGraph+isComplete) ⇒ <code>boolean</code>
-  * [.choices()](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.choose(terminal)](#GuidedDecisionGraph+choose)
   * [.constructs()](#GuidedDecisionGraph+constructs) ⇒ <code>Array.&lt;string&gt;</code>
   * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
+  * [.choices([nDeep])](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code>
 
 <a name="new_GuidedDecisionGraph_new"></a>
 ### new GuidedDecisionGraph(dg, start)
@@ -244,12 +244,6 @@ nonterminal? ie, does the construction end in epsilon?
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>boolean</code> - is the construction complete  
-<a name="GuidedDecisionGraph+choices"></a>
-### guidedDecisionGraph.choices() ⇒ <code>Array.&lt;string&gt;</code>
-returns an array of the possible next terminals
-
-**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
-**Returns**: <code>Array.&lt;string&gt;</code> - a terminal symbol chain  
 <a name="GuidedDecisionGraph+choose"></a>
 ### guidedDecisionGraph.choose(terminal)
 adds the given terminal to the construction
@@ -288,6 +282,35 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 
 - throws an error if called when construction is empty
 
+<a name="GuidedDecisionGraph+choices"></a>
+### guidedDecisionGraph.choices([nDeep]) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code>
+returns all possible next terminals chains of length nDeep. Some chains may
+have a length less than nDeep or if that chain reaches epsilon.
+
+**Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
+**Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code> - if nDeep=1, an array of terminal symbols, else
+an array of nDeep length arrays of terminal choices  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| [nDeep] | <code>number</code> | <code>1</code> | will search for nDeep possible choices |
+
+**Example**  
+```js
+// guide is an in-progress GuidedDecisionGraph
+guide.construction()   => ['the', 'dog', 'ate']
+guide.choices()        => ['', 'the']
+guide.choices(3)       =>
+[ [ '' ],
+  [ 'the', 'squirrel', 'that' ],
+  [ 'the', 'squirrel', '' ],
+  [ 'the', 'bird', 'that' ],
+  [ 'the', 'bird', '' ],
+  [ 'the', 'cat', 'that' ],
+  [ 'the', 'cat', '' ],
+  [ 'the', 'dog', 'that' ],
+  [ 'the', 'dog', '' ] ]
+```
 <a name="parseGrammar"></a>
 ## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>
 parse a grammar given as an object and compile it into a decision graph
