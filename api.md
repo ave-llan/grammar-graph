@@ -252,7 +252,7 @@ adds the given terminal to the construction
 
 | Param | Type | Description |
 | --- | --- | --- |
-| terminal | <code>string</code> | the name of a terminal vertex in the Decision Graph which is in the current set of possible choices. |
+| terminal | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | the name of a terminal vertex in the Decision Graph which is in the current set of possible choices. Or a valid sequence of terminal symbols as an array. |
 
 <a name="GuidedDecisionGraph+constructs"></a>
 ### guidedDecisionGraph.constructs() ⇒ <code>Array.&lt;string&gt;</code>

@@ -128,7 +128,7 @@ test('GuidedDecisionGraph methods', function (t) {
   t.end()
 })
 
-test('GuidedDecisionGraph nDeep choices', function (t) {
+test('GuidedDecisionGraph nDeep choices and multiple .choose()', function (t) {
   var g = {
     Sentence: ['NounPhrase VerbPhrase'],
     NounPhrase: ['the Noun', 'the Noun RelativeClause'],
@@ -144,9 +144,10 @@ test('GuidedDecisionGraph nDeep choices', function (t) {
   t.deepEqual(guide.choices(1), ['the'])
   t.deepEqual(guide.choices(2).sort(),
     [['the', 'dog'], ['the', 'cat'], ['the', 'squirrel'], ['the', 'bird']].sort())
-  guide.choose('the')
-  guide.choose('dog')
-  guide.choose('ate')
+
+  guide.choose(['the', 'dog', 'ate'])
+  t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
+
   t.deepEqual(guide.choices(3).sort(),
     [ [ '' ],
       [ 'the', 'squirrel', 'that' ],
@@ -197,5 +198,8 @@ test('GuidedDecisionGraph nDeep choices', function (t) {
       [ 'the', 'dog', 'that', 'befriended', 'the' ],
       [ 'the', 'dog', '' ] ].sort())
 
+  guide.choose([ 'the', 'squirrel', 'that', 'loved', 'the' ])
+  t.deepEqual(guide.construction(),
+    [ 'the', 'dog', 'ate', 'the', 'squirrel', 'that', 'loved', 'the' ])
   t.end()
 })
