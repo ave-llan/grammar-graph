@@ -285,7 +285,7 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 <a name="GuidedDecisionGraph+choices"></a>
 ### guidedDecisionGraph.choices([nDeep]) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code>
 returns all possible next terminals chains of length nDeep. Some chains may
-have a length less than nDeep or if that chain reaches epsilon.
+have a length less than nDeep if that chain ends in epsilon.
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code> - if nDeep=1, an array of terminal symbols, else
