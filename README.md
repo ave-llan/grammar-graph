@@ -102,8 +102,21 @@ At any point, you can move back a step by popping off the last choice.
 ```js
 guide.pop()            => ''
 guide.choices()        => ['', 'the']
-guide.pop()            => 'ate'
-guide.choices()        => ['that', 'befriended', 'loved', 'ate', 'attacked']
+```
+
+You can optionally provide `guide.choices()` with a number indicating the depth of choices you want, and it will return a list of all possible combinations of terminals of that length (or shorter if it ends in a terminal).
+
+```js
+guide.choices(3)        =>
+[ [ '' ],
+  [ 'the', 'squirrel', 'that' ],
+  [ 'the', 'squirrel', '' ],
+  [ 'the', 'bird', 'that' ],
+  [ 'the', 'bird', '' ],
+  [ 'the', 'cat', 'that' ],
+  [ 'the', 'cat', '' ],
+  [ 'the', 'dog', 'that' ],
+  [ 'the', 'dog', '' ] ]
 ```
 
 ## Grammar
