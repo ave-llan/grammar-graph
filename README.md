@@ -82,7 +82,7 @@ guide.choices()        =>  ['squirrel', 'bird', 'cat', 'dog' ]
 Let's continue the construction.
 ```js
 guide.choices()        =>  ['dog', 'cat', 'squirrel', 'bird']
-guide.choose('squirrel')
+guide.choose('dog')
 
 guide.choices()        =>  ['that', 'befriended', 'loved', 'ate', 'attacked']
 guide.choose('ate')
@@ -94,8 +94,8 @@ This last set of choices includes the empty string, which indicates this could b
 ```js
 guide.choose('')
 guide.choices()        => []
-guide.construction()   => ['the', 'squirrel', 'ate', '' ]
-guide.constructs()     => ['the squirrel ate']
+guide.construction()   => ['the', 'dog', 'ate', '' ]
+guide.constructs()     => ['the dog ate']
 ```
 
 At any point, you can move back a step by popping off the last choice.
@@ -117,6 +117,12 @@ guide.choices(3)        =>
   [ 'the', 'cat', '' ],
   [ 'the', 'dog', 'that' ],
   [ 'the', 'dog', '' ] ]
+```
+
+In addition to a single terminal string, `guide.choose()` can also accept an array of terminal strings.
+```js
+guide.choose([ 'the', 'squirrel', '' ])
+guide.construction()    => ['the', 'dog', 'ate', 'the', 'squirrel', '' ]
 ```
 
 ## Grammar
