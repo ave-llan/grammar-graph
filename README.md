@@ -104,19 +104,32 @@ guide.pop()            => ''
 guide.choices()        => ['', 'the']
 ```
 
-You can optionally provide `guide.choices()` with a number indicating the depth of choices you want, and it will return a list of all possible combinations of terminals of that length (or shorter if it ends in a terminal).
+You can optionally provide `guide.choices()` with a number indicating the depth of choices you want. If you request a depth greater than 1, it will return an array of TreeNodes which are each at most nDeep (or less if a path ends in a terminal).
 
 ```js
 guide.choices(3)        =>
-[ [ '' ],
-  [ 'the', 'squirrel', 'that' ],
-  [ 'the', 'squirrel', '' ],
-  [ 'the', 'bird', 'that' ],
-  [ 'the', 'bird', '' ],
-  [ 'the', 'cat', 'that' ],
-  [ 'the', 'cat', '' ],
-  [ 'the', 'dog', 'that' ],
-  [ 'the', 'dog', '' ] ]
+  [ { val: '',
+     next: [] },
+   { val: 'the',
+     next: [ { val: 'squirrel',
+              next: [ { val: 'that', next: [] },
+                      { val: '',     next: [] } ]
+             },
+             { val: 'bird',
+              next: [ { val: 'that', next: [] },
+                      { val: '',     next: [] } ]
+             },
+             { val: 'cat',
+              next: [ { val: 'that', next: [] },
+                      { val: '',     next: [] } ]
+             },
+             { val: 'dog',
+              next: [ { val: 'that', next: [] },
+                      { val: '',     next: [] } ]
+             }
+           ]
+   }
+  ]
 ```
 
 In addition to a single terminal string, `guide.choose()` can also accept an array of terminal strings.
