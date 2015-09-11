@@ -138,7 +138,7 @@ test('GuidedDecisionGraph nDeep choices and multiple .choose()', function (t) {
     Verb: ['befriended', 'loved', 'ate', 'attacked']
   }
   var graph = new GrammarGraph(g)
-  var guide = graph.guide('Sentence')
+  var guide = graph.createGuide('Sentence')
 
   t.deepEqual(guide.choices(), ['the'])
   t.deepEqual(guide.choices(1), ['the'])

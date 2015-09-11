@@ -8,6 +8,15 @@ test('reduceGrammar', function (t) {
     Noun: ['dog', 'cat', 'bird']
   }
 
+  t.deepEqual(g,
+    {
+      NounPhrase: ['the Noun', 'the Noun RelativeClause'],
+      RelativeClause: ['that VerbPhrase'],
+      Noun: ['dog', 'cat', 'bird']
+    }, 'does not mutate argument')
+
+  t.notEqual(reduceGrammar(g), g)
+
   t.deepEqual(reduceGrammar(g), {
     NounPhrase: ['_NounPhrase_1', '_NounPhrase_2'],
     _NounPhrase_1: ['the Noun'],
