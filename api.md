@@ -6,6 +6,8 @@
 <dd></dd>
 <dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
 <dd></dd>
+<dt><a href="#TreeNode">TreeNode</a></dt>
+<dd></dd>
 </dl>
 ## Functions
 <dl>
@@ -311,6 +313,26 @@ guide.choices(3)       =>
   [ 'the', 'dog', 'that' ],
   [ 'the', 'dog', '' ] ]
 ```
+<a name="TreeNode"></a>
+## TreeNode
+**Kind**: global class  
+**See**: [choices](#GuidedDecisionGraph+choices)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| val |  | any value |
+| next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
+
+<a name="new_TreeNode_new"></a>
+### new TreeNode(dg)
+Tree nodes to return decision trees
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| dg | <code>[DecisionGraph](#DecisionGraph)</code> | a Decision Graph that defines a grammar |
+
 <a name="parseGrammar"></a>
 ## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>
 parse a grammar given as an object and compile it into a decision graph
