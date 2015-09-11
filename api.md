@@ -221,7 +221,7 @@ get a new GuidedDecisionGraph using this decision graph
   * [.choose(terminal)](#GuidedDecisionGraph+choose)
   * [.constructs()](#GuidedDecisionGraph+constructs) ⇒ <code>Array.&lt;string&gt;</code>
   * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
-  * [.choices([nDeep])](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code>
+  * [.choices([nDeep])](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code>
 
 <a name="new_GuidedDecisionGraph_new"></a>
 ### new GuidedDecisionGraph(dg, start)
@@ -285,13 +285,13 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 - throws an error if called when construction is empty
 
 <a name="GuidedDecisionGraph+choices"></a>
-### guidedDecisionGraph.choices([nDeep]) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code>
-returns all possible next terminals chains of length nDeep. Some chains may
-have a length less than nDeep if that chain ends in epsilon.
+### guidedDecisionGraph.choices([nDeep]) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code>
+returns all possible next terminals, or an array of possible
+terminal chains
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
-**Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>Array.&lt;Array.&lt;string&gt;&gt;</code> - if nDeep=1, an array of terminal symbols, else
-an array of nDeep length arrays of terminal choices  
+**Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> - if nDeep=1, an array of terminal symbols, else
+an array of TreeNodes  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -303,20 +303,33 @@ an array of nDeep length arrays of terminal choices
 guide.construction()   => ['the', 'dog', 'ate']
 guide.choices()        => ['', 'the']
 guide.choices(3)       =>
-[ [ '' ],
-  [ 'the', 'squirrel', 'that' ],
-  [ 'the', 'squirrel', '' ],
-  [ 'the', 'bird', 'that' ],
-  [ 'the', 'bird', '' ],
-  [ 'the', 'cat', 'that' ],
-  [ 'the', 'cat', '' ],
-  [ 'the', 'dog', 'that' ],
-  [ 'the', 'dog', '' ] ]
+[ { val: '',
+    next: [] },
+  { val: 'the',
+    next: [ { val: 'squirrel',
+             next: [ { val: 'that', next: [] },
+                     { val: '',     next: [] } ]
+            },
+            { val: 'bird',
+             next: [ { val: 'that', next: [] },
+                     { val: '',     next: [] } ]
+            },
+            { val: 'cat',
+             next: [ { val: 'that', next: [] },
+                     { val: '',     next: [] } ]
+            },
+            { val: 'dog',
+             next: [ { val: 'that', next: [] },
+                     { val: '',     next: [] } ]
+            }
+          ]
+  }
+]
 ```
 <a name="TreeNode"></a>
 ## TreeNode
 **Kind**: global class  
-**See**: [choices](#GuidedDecisionGraph+choices)  
+**See**: TreeNode returned from [GuidedDecisionGraph.choices](#GuidedDecisionGraph+choices)  
 **Properties**
 
 | Name | Type | Description |
