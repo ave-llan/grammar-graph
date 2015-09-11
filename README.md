@@ -104,7 +104,7 @@ guide.pop()            => ''
 guide.choices()        => ['', 'the']
 ```
 
-You can optionally provide `guide.choices()` with a number indicating the depth of choices you want. If you request a depth greater than 1, it will return an array of TreeNodes which are each at most nDeep (or less if a path ends in a terminal).
+You can optionally provide `guide.choices()` with a number indicating the depth of choices you want. If you request a depth greater than 1, instead of an array of strings, it will return an array of TreeNodes which are each at most nDeep (or less if a path ends in a terminal).
 
 ```js
 guide.choices(3)        =>
