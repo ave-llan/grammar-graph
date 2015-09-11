@@ -291,7 +291,7 @@ terminal chains
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> - if nDeep=1, an array of terminal symbols, else
-an array of TreeNodes  
+an array of [TreeNodes](#TreeNode)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
