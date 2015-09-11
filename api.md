@@ -154,7 +154,7 @@ get an array of vertex names
   * [.vertices()](#GrammarGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
   * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
-  * [.guide(start)](#GrammarGraph+guide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+  * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
 
 <a name="new_GrammarGraph_new"></a>
 ### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
@@ -198,8 +198,8 @@ is this a type AND vertex (and not a type OR)?
 | --- | --- | --- |
 | v | <code>string</code> | the name of a vertex |
 
-<a name="GrammarGraph+guide"></a>
-### grammarGraph.guide(start) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+<a name="GrammarGraph+createGuide"></a>
+### grammarGraph.createGuide(start) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
 get a new GuidedDecisionGraph using this decision graph
 
 **Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
@@ -290,8 +290,8 @@ returns all possible next terminals, or an array of possible
 terminal chains
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
-**Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> - if nDeep=1, an array of terminal symbols, else
-an array of [TreeNodes](#TreeNode)  
+**Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> - if nDeep=1, an array of terminal symbols (strings),
+else an array of [TreeNodes](#TreeNode)  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |

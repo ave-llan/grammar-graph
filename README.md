@@ -46,7 +46,7 @@ Where did `'_NounPhrase_1'`, `'_NounPhrase_2'`, and `'_VerbPhrase_1'` come from?
 
 Let's create a new guide for constructing sentences from the langauge. Just indicate a starting point in the grammar, in this case `'Sentence'`.
 ```js
-var guide = graph.guide('Sentence')
+var guide = graph.createGuide('Sentence')
 ```
 
 The guide gives choices for the next terminal in your construction. Behind the scenes, it is doing a breadth-first search for terminals from the current position. In our grammar, the only possible first terminal is `'the'`:

@@ -21,7 +21,7 @@ test('GrammarGraph', function (t) {
 
   t.true(graph instanceof GrammarGraph)
 
-  var guide = graph.guide('NounPhrase')
+  var guide = graph.createGuide('NounPhrase')
   t.true(guide instanceof GuidedDecisionGraph)
 
   t.deepEqual(graph.adj('bird'), [])
