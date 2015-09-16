@@ -19,6 +19,7 @@
   },
   "keywords": [
     "graph",
+    "state machine",
     "grammar graph",
     "generator",
     "language generator",
