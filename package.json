@@ -20,6 +20,8 @@
   "keywords": [
     "graph",
     "state machine",
+    "automaton",
+    "non-deterministic finite state machine",
     "grammar graph",
     "generator",
     "language generator",
