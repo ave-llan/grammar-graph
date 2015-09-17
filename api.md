@@ -10,8 +10,8 @@
 ## Typedefs
 <dl>
 <dt><a href="#SymbolChain">SymbolChain</a> : <code>string</code></dt>
-<dd><p>a string of symbol names seperated by whitespace or
-another user defined seperator</p>
+<dd><p>a string of one or more symbol names seperated by whitespace or
+another user defined seperator (see: seperator param for <a href="#GrammarGraph">GrammarGraph</a>)</p>
 </dd>
 <dt><a href="#Grammar">Grammar</a> : <code>Object</code></dt>
 <dd><p>a user defined context-free grammar formatted as an object consisting of key-value pairs,
@@ -223,10 +223,15 @@ Tree nodes to return decision trees
 
 <a name="SymbolChain"></a>
 ## SymbolChain : <code>string</code>
-a string of symbol names seperated by whitespace or
-another user defined seperator
+a string of one or more symbol names seperated by whitespace or
+another user defined seperator (see: seperator param for [GrammarGraph](#GrammarGraph))
 
 **Kind**: global typedef  
+**Example**  
+```js
+'dog'                        // just a single symbol, the word 'dog'
+'the Noun RelativeClause'    // three symbols
+```
 <a name="Grammar"></a>
 ## Grammar : <code>Object</code>
 a user defined context-free grammar formatted as an object consisting of key-value pairs,
