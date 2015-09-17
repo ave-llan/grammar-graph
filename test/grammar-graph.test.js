@@ -31,5 +31,4 @@ test('GrammarGraph', function (t) {
   t.false(graph.isTypeAND('NounPhrase'))
 
   t.end()
-
 })

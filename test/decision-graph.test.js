@@ -67,8 +67,12 @@ test('DecisionGraph methods', function (t) {
   t.equal(dg.V(), 19)
 
   // check that error is thrown if adding edge to vertex which is not present
-  t.throws(function () {dg.addEdge('Sentence', 'NotAVertex')}, Error)
-  t.throws(function () {dg.addEdge('Sentence', ['cat', 'bat'])}, Error)
+  t.throws(function () {
+    dg.addEdge('Sentence', 'NotAVertex')
+  }, Error)
+  t.throws(function () {
+    dg.addEdge('Sentence', ['cat', 'bat'])
+  }, Error)
 
   t.end()
 })

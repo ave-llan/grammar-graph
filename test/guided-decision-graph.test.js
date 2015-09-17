@@ -40,8 +40,9 @@ test('GuidedDecisionGraph methods', function (t) {
   t.deepEqual(guide.construction(), [])
   t.deepEqual(guide.choices(), ['the'])
   t.false(guide.isComplete())
-  t.throws(function () {guide.pop()}, Error,
-    'Should not be able to pop empty construction')
+  t.throws(function () {
+    guide.pop()
+  }, Error, 'Should not be able to pop empty construction')
   t.deepEqual(guide.constructs(),
     ['the Noun RelativeClause VerbPhrase',
      'the Noun VerbPhrase'])
@@ -111,8 +112,12 @@ test('GuidedDecisionGraph methods', function (t) {
     'the dog ate the cat that ate the bird that attacked the squirrel')
 
   // throws errors when given a terminal which is not a valid next choice
-  t.throws(function () {guide.choose('the')}, Error)
-  t.throws(function () {guide.choose(' ')}, Error)
+  t.throws(function () {
+    guide.choose('the')
+  }, Error)
+  t.throws(function () {
+    guide.choose(' ')
+  }, Error)
 
   t.equal(guide.pop(), 'squirrel')
   t.equal(guide.pop(), 'the')
