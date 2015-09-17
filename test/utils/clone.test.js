@@ -1,5 +1,5 @@
 var test = require('tape')
-var clone = require('../lib/utils/clone.js')
+var clone = require('../../lib/utils/clone.js')
 
 test('clone()', function (t) {
   var sample = [1, 'a', 3, '4', 22, true, null, 0]
