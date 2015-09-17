@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "standard && tape \"test/**/*.test.js\" | faucet",
-    "docs": "jsdoc2md \"lib/**/*.js\" > api.md",
+    "docs": "jsdoc2md lib/grammar-graph.js lib/guided-decision-graph.js> api.md && jsdoc2md \"lib/**/*.js\" > internal-api.md",
     "preversion": "npm test",
     "postversion": "git push"
   },
