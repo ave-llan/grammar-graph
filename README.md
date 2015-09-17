@@ -87,55 +87,73 @@ guide.choose('dog')
 guide.choices()        =>  ['that', 'befriended', 'loved', 'ate', 'attacked']
 guide.choose('ate')
 
-guide.choices()        => ['', 'the']
+guide.choices()        => ['the']
 ```
 
-This last set of choices includes the empty string, which indicates this could be a valid end to the construction. Choosing the empty string ends the construction and there are no more choices.
+We could choose 'the' from this last set of choices, but it just so happens that the current construction could be considered a complete `Sentence` (our starting point):
 ```js
-guide.choose('')
-guide.choices()        => []
-guide.construction()   => ['the', 'dog', 'ate', '' ]
-guide.constructs()     => ['the dog ate']
+guide.construction()   => ['the', 'dog', 'ate']
+guide.isComplete()     => true
+guide.constructs()     =>
+[ 'the dog ate',
+  'the dog ate the Noun',
+  'the dog ate the Noun RelativeClause' ]
+```
+
+If we go ahead and choose 'the', we no longer have a complete sentence.
+```js
+guide.choose('the')
+guide.construction()   => ['the', 'dog', 'ate', 'the']
+guide.isComplete()     => false
 ```
 
 At any point, you can move back a step by popping off the last choice.
 ```js
-guide.pop()            => ''
-guide.choices()        => ['', 'the']
+guide.pop()            => 'the'
+guide.construction()   => ['the', 'dog', 'ate']
+guide.isComplete()     => true
 ```
 
 You can optionally provide `guide.choices()` with a number indicating the depth of choices you want. If you request a depth greater than 1, instead of an array of strings, it will return an array of TreeNodes which are each at most nDeep (or less if a path ends in a terminal).
 
 ```js
+guide.choose('the')
+guide.construction()    => ['the', 'dog', 'ate', 'the']
+guide.choices()         => ['squirrel', 'bird', 'cat', 'dog']
 guide.choices(3)        =>
-  [ { val: '',
-     next: [] },
-   { val: 'the',
-     next: [ { val: 'squirrel',
-              next: [ { val: 'that', next: [] },
-                      { val: '',     next: [] } ]
-             },
-             { val: 'bird',
-              next: [ { val: 'that', next: [] },
-                      { val: '',     next: [] } ]
-             },
-             { val: 'cat',
-              next: [ { val: 'that', next: [] },
-                      { val: '',     next: [] } ]
-             },
-             { val: 'dog',
-              next: [ { val: 'that', next: [] },
-                      { val: '',     next: [] } ]
-             }
+[ { val: 'squirrel',
+   next: [ { val: 'that',
+            next:
+             [ { val: 'attacked',   next: [] },
+               { val: 'ate',        next: [] },
+               { val: 'loved',      next: [] },
+               { val: 'befriended', next: [] }
+             ]
+           },
+
+  { val: 'bird',
+   next: [ { val: 'that',
+          next:
+           [ { val: 'attacked',   next: [] },
+             { val: 'ate',        next: [] },
+             { val: 'loved',      next: [] },
+             { val: 'befriended', next: [] }
            ]
-   }
-  ]
+         },
+
+  { val: 'cat',
+    next: [ etc... ] },
+
+  { val: 'dog',
+    next: [ etc... ] }
+]
 ```
 
 In addition to a single terminal string, `guide.choose()` can also accept an array of terminal strings.
 ```js
-guide.choose([ 'the', 'squirrel', '' ])
-guide.construction()    => ['the', 'dog', 'ate', 'the', 'squirrel', '' ]
+guide.choose(['squirrel', 'that', 'attacked'])
+guide.construction()    => ['the', 'dog', 'ate', 'the', 'squirrel', 'that', 'attacked']
+guide.complete()        => true
 ```
 
 ## Grammar
