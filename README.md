@@ -46,7 +46,7 @@ Where did `'_NounPhrase_1'`, `'_NounPhrase_2'`, and `'_VerbPhrase_1'` come from?
 
 ## GrammarGraph.createGuide
 
-Let's create a new guide for constructing sentences from the langauge. Just indicate a starting point in the grammar, in this case `'Sentence'`.
+Let's create a new guide for constructing sentences from the langauge. Just indicate a starting point in the grammar, in this case `Sentence`. The guide will help you construct a complete Sentence.
 ```js
 var guide = graph.createGuide('Sentence')
 ```
@@ -56,12 +56,12 @@ The guide gives choices for the next terminal in your construction. Behind the s
 guide.choices()        =>  ['the']
 ```
 
-You can also check the full construct at any point in time. In this case, we will see that even though `'the'` is the only possible first terminal, there are actually two possible paths for the construction.
+You can also check all the possible constructs at any point in time. In this case, we will see that even though `'the'` is the only possible first terminal, there are actually two possible paths for the construction.
 ```js
 guide.constructs()     =>
 [ 'the Noun RelativeClause VerbPhrase', 'the Noun VerbPhrase' ]
 ```
-To get to this point, the Guide has expanded `'Sentence'` => `'NounPhrase VerbPhrase'` => `'the Noun RelativeClause VerbPhrase' OR 'the Noun VerbPhrase'`. It stops at this point because it has reached terminal symbol `'the'` in both possible paths.
+To get to this point, the Guide has expanded `'Sentence'` => `'NounPhrase VerbPhrase'` => `'the Noun RelativeClause VerbPhrase'` **or** `'the Noun VerbPhrase'`. It stops at this point because it has reached terminal symbol `'the'` in both possible paths.
 
 
 `'the'` is the only choice, so let's choose it. We can then check our construction and possible constructs.
