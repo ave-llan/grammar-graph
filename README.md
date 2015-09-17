@@ -1,4 +1,4 @@
-Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar). Like a regular expression which generates strings instead of matching them.
+Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar).
 
 ## Example
 
