@@ -8,8 +8,6 @@
 <dd></dd>
 <dt><a href="#TreeNode">TreeNode</a></dt>
 <dd></dd>
-<dt><a href="#Stack">Stack</a></dt>
-<dd></dd>
 </dl>
 ## Functions
 <dl>
@@ -353,45 +351,6 @@ Tree nodes to return decision trees
 | --- | --- | --- |
 | val | <code>string</code> | a terminal string |
 
-<a name="Stack"></a>
-## Stack
-**Kind**: global class  
-
-* [Stack](#Stack)
-  * [new Stack()](#new_Stack_new)
-  * [.isEmpty()](#Stack+isEmpty) ⇒ <code>boolean</code>
-  * [.push(item)](#Stack+push)
-  * [.pop()](#Stack+pop) ⇒
-  * [.clone()](#Stack+clone) ⇒ <code>[Stack](#Stack)</code>
-
-<a name="new_Stack_new"></a>
-### new Stack()
-a Stack
-
-<a name="Stack+isEmpty"></a>
-### stack.isEmpty() ⇒ <code>boolean</code>
-**Kind**: instance method of <code>[Stack](#Stack)</code>  
-**Returns**: <code>boolean</code> - is the stack empty?  
-<a name="Stack+push"></a>
-### stack.push(item)
-**Kind**: instance method of <code>[Stack](#Stack)</code>  
-
-| Param | Description |
-| --- | --- |
-| item | - adds an item of any type to the top of the stack |
-
-<a name="Stack+pop"></a>
-### stack.pop() ⇒
-removes and returns the top of the stack
-
-**Kind**: instance method of <code>[Stack](#Stack)</code>  
-**Returns**: the top of the stack  
-<a name="Stack+clone"></a>
-### stack.clone() ⇒ <code>[Stack](#Stack)</code>
-Returns a clone of this stack. A deep copy if the stack contains only primitive values.
-
-**Kind**: instance method of <code>[Stack](#Stack)</code>  
-**Returns**: <code>[Stack](#Stack)</code> - a clone of this stack  
 <a name="parseGrammar"></a>
 ## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>
 parse a grammar given as an object and compile it into a decision graph
