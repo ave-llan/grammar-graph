@@ -8,8 +8,8 @@
     "test": "./test"
   },
   "scripts": {
-    "test": "standard && tape test/**/*.test.js | faucet",
-    "docs": "jsdoc2md lib/*.js > api.md",
+    "test": "standard && tape \"test/**/*.test.js\" | faucet",
+    "docs": "jsdoc2md \"lib/**/*.js\" > api.md",
     "preversion": "npm test",
     "postversion": "git push"
   },
