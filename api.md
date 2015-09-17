@@ -117,7 +117,8 @@ the current construction
 <a name="GuidedDecisionGraph+isComplete"></a>
 ### guidedDecisionGraph.isComplete() ⇒ <code>boolean</code>
 is the current construction a valid, complete construction from the starting
-nonterminal? ie, could the construction be haulted at this point?
+nonterminal? ie, could the construction be haulted at this point? Depending
+on the grammar, this may be true even if there are more choices at this point.
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>boolean</code> - is the construction complete  

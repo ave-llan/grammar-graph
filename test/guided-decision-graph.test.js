@@ -35,10 +35,6 @@ test('GuidedDecisionGraph methods', function (t) {
       var a = new GuidedDecisionGraph(dg)
       a // Standard is complaining that a is defined and not used
     }, Error)
-  t.throws(function () {
-      var a = new GuidedDecisionGraph(dg)
-      a
-    }, Error)
 
   var guide = new GuidedDecisionGraph(dg, 'Sentence')
   t.deepEqual(guide.construction(), [])
@@ -81,24 +77,28 @@ test('GuidedDecisionGraph methods', function (t) {
 
   guide.choose('ate')
   t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
+  t.true(guide.isComplete())
   t.deepEqual(guide.choices().sort(),
-    ['', 'the'].sort())
+    ['the'].sort())
   t.deepEqual(guide.constructs(),
     [ 'the dog ate',
       'the dog ate the Noun',
       'the dog ate the Noun RelativeClause' ])
 
   t.equal(guide.pop(), 'ate')
+  t.false(guide.isComplete())
   t.deepEqual(guide.construction(), ['the', 'dog'])
   t.deepEqual(guide.choices().sort(),
     ['befriended', 'loved', 'attacked', 'ate', 'that'].sort())
 
   guide.choose('ate')
   t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
+  t.true(guide.isComplete())
   t.deepEqual(guide.choices().sort(),
-    ['', 'the'].sort())
+    ['the'].sort())
 
   guide.choose('the')
+  t.false(guide.isComplete())
   t.deepEqual(guide.construction(), ['the', 'dog', 'ate', 'the'])
   t.deepEqual(guide.choices().sort(),
     ['dog', 'cat', 'squirrel', 'bird'].sort())
@@ -117,13 +117,13 @@ test('GuidedDecisionGraph methods', function (t) {
   t.equal(guide.pop(), 'squirrel')
   t.equal(guide.pop(), 'the')
   t.deepEqual(guide.choices().sort(),
-    ['the', ''].sort())
-
-  guide.choose('')
-  t.deepEqual(guide.choices(), [])
+    ['the'].sort())
   t.true(guide.isComplete())
-  t.deepEqual(guide.constructs(),
-    ['the dog ate the cat that ate the bird that attacked'])
+
+  t.deepEqual(guide.constructs().sort(),
+    ['the dog ate the cat that ate the bird that attacked',
+     'the dog ate the cat that ate the bird that attacked the Noun',
+     'the dog ate the cat that ate the bird that attacked the Noun RelativeClause'].sort())
 
   t.end()
 })
@@ -156,24 +156,19 @@ test('GuidedDecisionGraph nDeep choices and multiple .choose()', function (t) {
   t.deepEqual(guide.construction(), ['the', 'dog', 'ate'])
 
   t.deepEqual(guide.choices(3),
-    [ { val: '',
-        next: [] },
+    [
       { val: 'the',
         next: [ { val: 'squirrel',
-                 next: [ { val: 'that', next: [] },
-                         { val: '', next: [] } ]
+                 next: [ { val: 'that', next: [] } ]
                 },
                 { val: 'bird',
-                 next: [ { val: 'that', next: [] },
-                         { val: '', next: [] } ]
+                 next: [ { val: 'that', next: [] } ]
                 },
                 { val: 'cat',
-                 next: [ { val: 'that', next: [] },
-                         { val: '', next: [] } ]
+                 next: [ { val: 'that', next: [] } ]
                 },
                 { val: 'dog',
-                 next: [ { val: 'that', next: [] },
-                         { val: '', next: [] } ]
+                 next: [ { val: 'that', next: [] } ]
                 }
               ]
       }
@@ -182,5 +177,6 @@ test('GuidedDecisionGraph nDeep choices and multiple .choose()', function (t) {
   guide.choose([ 'the', 'squirrel', 'that', 'loved', 'the' ])
   t.deepEqual(guide.construction(),
     [ 'the', 'dog', 'ate', 'the', 'squirrel', 'that', 'loved', 'the' ])
+
   t.end()
 })
