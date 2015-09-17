@@ -1,6 +1,6 @@
 Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar).
 
-## Example
+## Create a GrammarGraph
 
 Install the npm module.
 ```
@@ -43,6 +43,8 @@ Where did `'_NounPhrase_1'`, `'_NounPhrase_2'`, and `'_VerbPhrase_1'` come from?
 }
 ```
 
+
+## GrammarGraph.createGuide
 
 Let's create a new guide for constructing sentences from the langauge. Just indicate a starting point in the grammar, in this case `'Sentence'`.
 ```js
