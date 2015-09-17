@@ -26,6 +26,19 @@ more than one choice will either be a single AND-rule or a single terminal.</p>
 Will not work if the object or array contains non-primitives.</p>
 </dd>
 </dl>
+## Typedefs
+<dl>
+<dt><a href="#SymbolChain">SymbolChain</a> : <code>string</code></dt>
+<dd><p>a string of symbol names seperated by whitespace or
+another user defined seperator</p>
+</dd>
+<dt><a href="#Grammar">Grammar</a> : <code>Object</code></dt>
+<dd><p>a user defined context-free grammar formatted as an object consisting of key-value pairs,
+with each <a href="https://github.com/jrleszcz/grammar-graph#non-terminal-symbols">non-terminal symbol</a>
+pointing to an array of one or more <a href="https://github.com/jrleszcz/grammar-graph#symbol-chains">symbol chains</a>
+choices for this non-terminal.</p>
+</dd>
+</dl>
 <a name="DecisionGraph"></a>
 ## DecisionGraph
 **Kind**: global class  
@@ -169,7 +182,7 @@ creates a new GrammarGraph which can generate guides.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
-| grammar | <code>object</code> |  | an object representing a grammar. See example below. |
+| grammar | <code>[Grammar](#Grammar)</code> |  | an object representing a grammar. |
 | [seperator] | <code>string</code> &#124; <code>RegExp</code> | <code>&quot;/\\s+/&quot;</code> | how tokens will be divided in rules |
 | [epsilonSymbol] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
 
@@ -448,3 +461,36 @@ Will not work if the object or array contains non-primitives.
 | --- | --- | --- |
 | obj | <code>object</code> &#124; <code>array</code> | an object array made up only of primitives |
 
+<a name="SymbolChain"></a>
+## SymbolChain : <code>string</code>
+a string of symbol names seperated by whitespace or
+another user defined seperator
+
+**Kind**: global typedef  
+<a name="Grammar"></a>
+## Grammar : <code>Object</code>
+a user defined context-free grammar formatted as an object consisting of key-value pairs,
+with each [non-terminal symbol](https://github.com/jrleszcz/grammar-graph#non-terminal-symbols)
+pointing to an array of one or more [symbol chains](https://github.com/jrleszcz/grammar-graph#symbol-chains)
+choices for this non-terminal.
+
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| symbol | <code>[Array.&lt;SymbolChain&gt;](#SymbolChain)</code> | each element of the array is a possible definition    for this symbol. |
+
+**Example**  
+```js
+var grammar = {
+      Sentence: ['NounPhrase VerbPhrase'],                 // only one definition of 'Sentence'
+    NounPhrase: ['the Noun', 'the Noun RelativeClause'],   // two possible definitions of 'NounPhrase'
+    VerbPhrase: ['Verb', 'Verb NounPhrase'],
+RelativeClause: ['that VerbPhrase'],
+          Noun: ['dog', 'cat', 'bird', 'squirrel'],        // four possible definitions of 'Noun'
+          Verb: ['befriended', 'loved', 'ate', 'attacked']
+}
+// non-terminals: Sentence, NounPhrase, VerbPhrase, RelativeClause, Noun, Verb
+//     terminals: the, that, dog, cat, bird, squirrel, befriended, loved, ate, attacked
+```
