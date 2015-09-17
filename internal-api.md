@@ -44,7 +44,7 @@ choices for this non-terminal.</p>
 **Kind**: global class  
 
 * [DecisionGraph](#DecisionGraph)
-  * [new DecisionGraph([epsilonSymbol])](#new_DecisionGraph_new)
+  * [new DecisionGraph()](#new_DecisionGraph_new)
   * [.addVertexAND(name)](#DecisionGraph+addVertexAND)
   * [.addVertexOR(name)](#DecisionGraph+addVertexOR)
   * [.addEdge(v, w)](#DecisionGraph+addEdge)
@@ -53,17 +53,11 @@ choices for this non-terminal.</p>
   * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
   * [.isVertex(v)](#DecisionGraph+isVertex) ⇒ <code>boolean</code>
   * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
-  * [.epsilon()](#DecisionGraph+epsilon) ⇒ <code>string</code>
   * [.vertices()](#DecisionGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
 
 <a name="new_DecisionGraph_new"></a>
-### new DecisionGraph([epsilonSymbol])
+### new DecisionGraph()
 creates a new DecisionGraph
-
-
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| [epsilonSymbol] | <code>string</code> | <code>&quot;&#x27;&#x27;&quot;</code> | Special terminal symbol that indicates this is an end of a construction. Defaults to the empty string. |
 
 <a name="DecisionGraph+addVertexAND"></a>
 ### decisionGraph.addVertexAND(name)
@@ -121,7 +115,6 @@ get the number of vertices in this graph
 <a name="DecisionGraph+isTerminal"></a>
 ### decisionGraph.isTerminal(v) ⇒ <code>boolean</code>
 is this a terminal vertex (does it have no outgoing edges?)
-Epsilon returns true to indicate the end of a construction.
 
 **Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
 **Returns**: <code>boolean</code> - is this a terminal vertex  
@@ -152,12 +145,6 @@ is this a type AND vertex (and not a type OR)?
 | --- | --- | --- |
 | v | <code>string</code> | the name of a vertex |
 
-<a name="DecisionGraph+epsilon"></a>
-### decisionGraph.epsilon() ⇒ <code>string</code>
-get the string representing epsilon in this graph
-
-**Kind**: instance method of <code>[DecisionGraph](#DecisionGraph)</code>  
-**Returns**: <code>string</code> - the string representing epsilon  
 <a name="DecisionGraph+vertices"></a>
 ### decisionGraph.vertices() ⇒ <code>Array.&lt;string&gt;</code>
 get an array of vertex names
