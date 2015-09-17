@@ -201,6 +201,7 @@ Arm Head Arm        // Arm      => ~~
 [View the api documentation here.](api.md)
 
 ## Development
+[View the internal api documentation here.](internal-api.md)
 
 Clone the git repository and install development dependencies:
 ```
