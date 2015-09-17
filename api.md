@@ -227,6 +227,7 @@ a string of one or more symbol names seperated by whitespace or
 another user defined seperator (see: seperator param for [GrammarGraph](#GrammarGraph))
 
 **Kind**: global typedef  
+**See**: a SymbolChain is used as definitions in [Grammar](#Grammar)  
 **Example**  
 ```js
 'dog'                        // just a single symbol, the word 'dog'
