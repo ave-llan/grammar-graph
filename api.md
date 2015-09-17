@@ -8,6 +8,8 @@
 <dd></dd>
 <dt><a href="#TreeNode">TreeNode</a></dt>
 <dd></dd>
+<dt><a href="#Stack">Stack</a></dt>
+<dd></dd>
 </dl>
 ## Functions
 <dl>
@@ -18,6 +20,10 @@
 <dd><p>reduces the rules of a grammar into a one to one form by assigning a name
 to all non-terminals. The end result is that each option on a rule with
 more than one choice will either be a single AND-rule or a single terminal.</p>
+</dd>
+<dt><a href="#clone">clone(obj)</a> ⇒ <code>object</code> | <code>array</code></dt>
+<dd><p>helper function to clone a simple object/array made up of primitives.
+Will not work if the object or array contains non-primitives.</p>
 </dd>
 </dl>
 <a name="DecisionGraph"></a>
@@ -242,7 +248,7 @@ the current construction
 <a name="GuidedDecisionGraph+isComplete"></a>
 ### guidedDecisionGraph.isComplete() ⇒ <code>boolean</code>
 is the current construction a valid, complete construction from the starting
-nonterminal? ie, does the construction end in epsilon?
+nonterminal? ie, could the construction be haulted at this point?
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>boolean</code> - is the construction complete  
@@ -346,6 +352,45 @@ Tree nodes to return decision trees
 | --- | --- | --- |
 | dg | <code>[DecisionGraph](#DecisionGraph)</code> | a Decision Graph that defines a grammar |
 
+<a name="Stack"></a>
+## Stack
+**Kind**: global class  
+
+* [Stack](#Stack)
+  * [new Stack()](#new_Stack_new)
+  * [.isEmpty()](#Stack+isEmpty) ⇒ <code>boolean</code>
+  * [.push(item)](#Stack+push)
+  * [.pop()](#Stack+pop) ⇒
+  * [.clone()](#Stack+clone) ⇒ <code>[Stack](#Stack)</code>
+
+<a name="new_Stack_new"></a>
+### new Stack()
+a Stack
+
+<a name="Stack+isEmpty"></a>
+### stack.isEmpty() ⇒ <code>boolean</code>
+**Kind**: instance method of <code>[Stack](#Stack)</code>  
+**Returns**: <code>boolean</code> - is the stack empty?  
+<a name="Stack+push"></a>
+### stack.push(item)
+**Kind**: instance method of <code>[Stack](#Stack)</code>  
+
+| Param | Description |
+| --- | --- |
+| item | - adds an item of any type to the top of the stack |
+
+<a name="Stack+pop"></a>
+### stack.pop() ⇒
+removes and returns the top of the stack
+
+**Kind**: instance method of <code>[Stack](#Stack)</code>  
+**Returns**: the top of the stack  
+<a name="Stack+clone"></a>
+### stack.clone() ⇒ <code>[Stack](#Stack)</code>
+Returns a clone of this stack. A deep copy if the stack contains only primitive values.
+
+**Kind**: instance method of <code>[Stack](#Stack)</code>  
+**Returns**: <code>[Stack](#Stack)</code> - a clone of this stack  
 <a name="parseGrammar"></a>
 ## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>
 parse a grammar given as an object and compile it into a decision graph
@@ -391,3 +436,15 @@ reduceGrammar(grammar)   =>
             Noun: ['dog', 'cat', 'bird']
 }
 ```
+<a name="clone"></a>
+## clone(obj) ⇒ <code>object</code> &#124; <code>array</code>
+helper function to clone a simple object/array made up of primitives.
+Will not work if the object or array contains non-primitives.
+
+**Kind**: global function  
+**Returns**: <code>object</code> &#124; <code>array</code> - a new clone of the provided object or array  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| obj | <code>object</code> &#124; <code>array</code> | an object array made up only of primitives |
+
