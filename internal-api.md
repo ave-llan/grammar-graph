@@ -335,22 +335,22 @@ guide.choices(3)       =>
 <a name="TreeNode"></a>
 ## TreeNode
 **Kind**: global class  
-**See**: TreeNode returned from [GuidedDecisionGraph.choices](#GuidedDecisionGraph+choices)  
+**See**: TreeNodes are returned from [GuidedDecisionGraph.choices](#GuidedDecisionGraph+choices)  
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
-| val |  | any value |
+| val | <code>string</code> | a terminal string |
 | next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
 
 <a name="new_TreeNode_new"></a>
-### new TreeNode(dg)
+### new TreeNode(val)
 Tree nodes to return decision trees
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| dg | <code>[DecisionGraph](#DecisionGraph)</code> | a Decision Graph that defines a grammar |
+| val | <code>string</code> | a terminal string |
 
 <a name="Stack"></a>
 ## Stack
