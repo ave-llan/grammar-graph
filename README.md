@@ -43,8 +43,10 @@ graph.vertices()       =>
 Where did `'_NounPhrase_1'`, `'_NounPhrase_2'`, and `'_VerbPhrase_1'` come from? Look at the definition of `NounPhrase` in the original grammar declaration. Both options contained multiple symbols, and the constructor has automatically created a name for each combination. In the case of `VerbPhrase`, only the second option contained multiple symbols, so only one extra name is needed. The automatic expansion of the original `NounPhrase` and `VerbPhrase` definitions result in the following equivalent definitions:
 ```js
 {
-     NounPhrase: ['_NounPhrase_1', '_NounPhrase_2'],
-     VerbPhrase: ['Verb', '_VerbPhrase_1'],
+     NounPhrase: ['_NounPhrase_1',
+                  '_NounPhrase_2'],
+     VerbPhrase: ['Verb',
+                  '_VerbPhrase_1'],
   _NounPhrase_1: ['the Noun'],
   _NounPhrase_2: ['the Noun RelativeClause'],
   _VerbPhrase_1: ['Verb NounPhrase']
@@ -175,11 +177,14 @@ A context-free grammar is a list of rules.  Here is a grammar with eight rules t
 {
   Creature: ['Arm Head Arm'],
       Head: ['( Face )'],
-      Face: ['HappyFace', 'ZenFace', 'SleepyFace'],
+      Face: ['HappyFace',
+             'ZenFace',
+             'SleepyFace'],
  HappyFace: ['^ Mouth ^'],
    ZenFace: ['- Mouth -'],
 SleepyFace: ['* Mouth *'],
-     Mouth: ['_', '_ Mouth'],
+     Mouth: ['_',
+             '_ Mouth'],
        Arm: ['~~']
 }
 ```
