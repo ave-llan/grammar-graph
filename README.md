@@ -133,25 +133,25 @@ guide.choose('the')
 guide.construction()    => ['the', 'dog', 'ate', 'the']
 guide.choices()         => ['squirrel', 'bird', 'cat', 'dog']
 guide.choices(3)        =>
-[ { val: 'squirrel',
-   next: [ { val: 'that',
+[ { val: 'squirrel',                              // squirrel
+    next: [ { val: 'that',                        // squirrel that
             next:
-             [ { val: 'attacked',   next: [] },
-               { val: 'ate',        next: [] },
-               { val: 'loved',      next: [] },
-               { val: 'befriended', next: [] }
+             [ { val: 'attacked',   next: [] },   // squirrel that attacked
+               { val: 'ate',        next: [] },   // squirrel that ate
+               { val: 'loved',      next: [] },   // squirrel that loved
+               { val: 'befriended', next: [] }    // squirrel that befriended
              ]
            },
 
-  { val: 'bird',
-   next: [ { val: 'that',
-          next:
-           [ { val: 'attacked',   next: [] },
-             { val: 'ate',        next: [] },
-             { val: 'loved',      next: [] },
-             { val: 'befriended', next: [] }
-           ]
-         },
+  { val: 'bird',                                  // bird
+    next: [ { val: 'that',                        // bird that
+            next:
+             [ { val: 'attacked',   next: [] },   // bird that attacked
+               { val: 'ate',        next: [] },   // bird that ate
+               { val: 'loved',      next: [] },   // bird that loved
+               { val: 'befriended', next: [] }    // bird that befriended
+             ]
+           },
 
   { val: 'cat',
     next: [ etc... ] },
