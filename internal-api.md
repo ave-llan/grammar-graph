@@ -291,7 +291,7 @@ submitted through [choose](#GuidedDecisionGraph+choose)
 
 <a name="GuidedDecisionGraph+choices"></a>
 ### guidedDecisionGraph.choices([nDeep]) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code>
-returns all possible next terminals, or an array of nDeep [TreeNodes]
+returns all possible next terminals, or an array of nDeep [TreeNodes](TreeNodes)
 
 **Kind**: instance method of <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>  
 **Returns**: <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> - if nDeep=1, an array of terminal symbols (strings),
