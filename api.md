@@ -5,12 +5,6 @@
 <dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
 <dd></dd>
 </dl>
-## Functions
-<dl>
-<dt><a href="#TreeNode">TreeNode(val)</a></dt>
-<dd><p>Tree nodes to return decision trees</p>
-</dd>
-</dl>
 ## Typedefs
 <dl>
 <dt><a href="#SymbolChain">SymbolChain</a> : <code>string</code></dt>
@@ -23,6 +17,8 @@ with each <a href="https://github.com/jrleszcz/grammar-graph#non-terminal-symbol
 pointing to an array of one or more <a href="https://github.com/jrleszcz/grammar-graph#symbol-chains">symbol chains</a>
 choices for this non-terminal.</p>
 </dd>
+<dt><a href="#TreeNode">TreeNode</a> : <code>object</code></dt>
+<dd></dd>
 </dl>
 <a name="GrammarGraph"></a>
 ## GrammarGraph
@@ -218,24 +214,6 @@ guide.choices(3)       =>
   }
 ]
 ```
-<a name="TreeNode"></a>
-## TreeNode(val)
-Tree nodes to return decision trees
-
-**Kind**: global function  
-**See**: TreeNodes are returned from [GuidedDecisionGraph.choices](#GuidedDecisionGraph+choices)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| val | <code>string</code> | a terminal string |
-
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| val | <code>string</code> | a terminal string |
-| next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
-
 <a name="SymbolChain"></a>
 ## SymbolChain : <code>string</code>
 a string of one or more symbol names seperated by whitespace or
@@ -275,3 +253,13 @@ RelativeClause: ['that VerbPhrase'],
 // non-terminals: Sentence, NounPhrase, VerbPhrase, RelativeClause, Noun, Verb
 //     terminals: the, that, dog, cat, bird, squirrel, befriended, loved, ate, attacked
 ```
+<a name="TreeNode"></a>
+## TreeNode : <code>object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| val | <code>PitchString</code> | a pitch string |
+| next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
+

@@ -11,9 +11,6 @@
 </dl>
 ## Functions
 <dl>
-<dt><a href="#TreeNode">TreeNode(val)</a></dt>
-<dd><p>Tree nodes to return decision trees</p>
-</dd>
 <dt><a href="#parseGrammar">parseGrammar(grammar, [seperator])</a> ⇒ <code><a href="#DecisionGraph">DecisionGraph</a></code></dt>
 <dd><p>parse a grammar given as an object and compile it into a decision graph</p>
 </dd>
@@ -39,6 +36,8 @@ with each <a href="https://github.com/jrleszcz/grammar-graph#non-terminal-symbol
 pointing to an array of one or more <a href="https://github.com/jrleszcz/grammar-graph#symbol-chains">symbol chains</a>
 choices for this non-terminal.</p>
 </dd>
+<dt><a href="#TreeNode">TreeNode</a> : <code>object</code></dt>
+<dd></dd>
 </dl>
 <a name="DecisionGraph"></a>
 ## DecisionGraph
@@ -391,24 +390,6 @@ only if the text is complete.
 | --- | --- | --- |
 | text | <code>string</code> | the text to check |
 
-<a name="TreeNode"></a>
-## TreeNode(val)
-Tree nodes to return decision trees
-
-**Kind**: global function  
-**See**: TreeNodes are returned from [GuidedDecisionGraph.choices](#GuidedDecisionGraph+choices)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| val | <code>string</code> | a terminal string |
-
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| val | <code>string</code> | a terminal string |
-| next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
-
 <a name="parseGrammar"></a>
 ## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>
 parse a grammar given as an object and compile it into a decision graph
@@ -505,3 +486,13 @@ RelativeClause: ['that VerbPhrase'],
 // non-terminals: Sentence, NounPhrase, VerbPhrase, RelativeClause, Noun, Verb
 //     terminals: the, that, dog, cat, bird, squirrel, befriended, loved, ate, attacked
 ```
+<a name="TreeNode"></a>
+## TreeNode : <code>object</code>
+**Kind**: global typedef  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| val | <code>PitchString</code> | a pitch string |
+| next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
+
