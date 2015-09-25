@@ -6,11 +6,14 @@
 <dd></dd>
 <dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
 <dd></dd>
-<dt><a href="#TreeNode">TreeNode</a></dt>
+<dt><a href="#Recognizer">Recognizer</a></dt>
 <dd></dd>
 </dl>
 ## Functions
 <dl>
+<dt><a href="#TreeNode">TreeNode(val)</a></dt>
+<dd><p>Tree nodes to return decision trees</p>
+</dd>
 <dt><a href="#parseGrammar">parseGrammar(grammar, [seperator])</a> ⇒ <code><a href="#DecisionGraph">DecisionGraph</a></code></dt>
 <dd><p>parse a grammar given as an object and compile it into a decision graph</p>
 </dd>
@@ -159,6 +162,7 @@ get an array of vertex names
   * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+  * [.getRecognizer(start)](#GrammarGraph+getRecognizer) ⇒ <code>[Recognizer](#Recognizer)</code>
 
 <a name="new_GrammarGraph_new"></a>
 ### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
@@ -213,6 +217,18 @@ get a new GuidedDecisionGraph using this decision graph
 | Param | Type | Description |
 | --- | --- | --- |
 | start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
+
+<a name="GrammarGraph+getRecognizer"></a>
+### grammarGraph.getRecognizer(start) ⇒ <code>[Recognizer](#Recognizer)</code>
+Returns a recognizer function that indicates whether a given text
+is a valid string in the language.
+
+**Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
+**Returns**: <code>[Recognizer](#Recognizer)</code> - a new recognizer function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| start | <code>string</code> | the name of a vertex in the decision graph from which to start the recognizer test |
 
 <a name="GuidedDecisionGraph"></a>
 ## GuidedDecisionGraph
@@ -330,25 +346,68 @@ guide.choices(3)       =>
   }
 ]
 ```
-<a name="TreeNode"></a>
-## TreeNode
+<a name="Recognizer"></a>
+## Recognizer
 **Kind**: global class  
+**Seperator**: <code>string\|</code>  
+
+* [Recognizer](#Recognizer)
+  * [new Recognizer(dg, start, [seperator])](#new_Recognizer_new)
+  * [.isValid(text)](#Recognizer+isValid) ⇒ <code>boolean</code>
+  * [.isComplete(text)](#Recognizer+isComplete) ⇒ <code>boolean</code>
+
+<a name="new_Recognizer_new"></a>
+### new Recognizer(dg, start, [seperator])
+create a Recognizer that can test if text is a valid sentence in a grammar
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| dg | <code>[DecisionGraph](#DecisionGraph)</code> |  | a Decision Graph that defines a grammar |
+| start | <code>string</code> |  | the name of a vertex in the decision graph from which to start the test |
+| [seperator] | <code>string</code> &#124; <code>RegExp</code> | <code>&quot;/\\s+/&quot;</code> | how tokens will be divided in given text |
+
+<a name="Recognizer+isValid"></a>
+### recognizer.isValid(text) ⇒ <code>boolean</code>
+is the text a valid in progress sentence in the grammar? Will return true
+even if the text is not complete.
+
+**Kind**: instance method of <code>[Recognizer](#Recognizer)</code>  
+**Returns**: <code>boolean</code> - is the text valid?  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>string</code> | the text to check |
+
+<a name="Recognizer+isComplete"></a>
+### recognizer.isComplete(text) ⇒ <code>boolean</code>
+is the text a valid and complete text in the grammar? Will return true
+only if the text is complete.
+
+**Kind**: instance method of <code>[Recognizer](#Recognizer)</code>  
+**Returns**: <code>boolean</code> - is the text valid and complete?  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>string</code> | the text to check |
+
+<a name="TreeNode"></a>
+## TreeNode(val)
+Tree nodes to return decision trees
+
+**Kind**: global function  
 **See**: TreeNodes are returned from [GuidedDecisionGraph.choices](#GuidedDecisionGraph+choices)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| val | <code>string</code> | a terminal string |
+
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | val | <code>string</code> | a terminal string |
 | next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
-
-<a name="new_TreeNode_new"></a>
-### new TreeNode(val)
-Tree nodes to return decision trees
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| val | <code>string</code> | a terminal string |
 
 <a name="parseGrammar"></a>
 ## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>

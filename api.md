@@ -4,8 +4,12 @@
 <dd></dd>
 <dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
 <dd></dd>
-<dt><a href="#TreeNode">TreeNode</a></dt>
-<dd></dd>
+</dl>
+## Functions
+<dl>
+<dt><a href="#TreeNode">TreeNode(val)</a></dt>
+<dd><p>Tree nodes to return decision trees</p>
+</dd>
 </dl>
 ## Typedefs
 <dl>
@@ -30,6 +34,7 @@ choices for this non-terminal.</p>
   * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+  * [.getRecognizer(start)](#GrammarGraph+getRecognizer) ⇒ <code>Recognizer</code>
 
 <a name="new_GrammarGraph_new"></a>
 ### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
@@ -84,6 +89,18 @@ get a new GuidedDecisionGraph using this decision graph
 | Param | Type | Description |
 | --- | --- | --- |
 | start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
+
+<a name="GrammarGraph+getRecognizer"></a>
+### grammarGraph.getRecognizer(start) ⇒ <code>Recognizer</code>
+Returns a recognizer function that indicates whether a given text
+is a valid string in the language.
+
+**Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
+**Returns**: <code>Recognizer</code> - a new recognizer function  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| start | <code>string</code> | the name of a vertex in the decision graph from which to start the recognizer test |
 
 <a name="GuidedDecisionGraph"></a>
 ## GuidedDecisionGraph
@@ -202,24 +219,22 @@ guide.choices(3)       =>
 ]
 ```
 <a name="TreeNode"></a>
-## TreeNode
-**Kind**: global class  
+## TreeNode(val)
+Tree nodes to return decision trees
+
+**Kind**: global function  
 **See**: TreeNodes are returned from [GuidedDecisionGraph.choices](#GuidedDecisionGraph+choices)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| val | <code>string</code> | a terminal string |
+
 **Properties**
 
 | Name | Type | Description |
 | --- | --- | --- |
 | val | <code>string</code> | a terminal string |
 | next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
-
-<a name="new_TreeNode_new"></a>
-### new TreeNode(val)
-Tree nodes to return decision trees
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| val | <code>string</code> | a terminal string |
 
 <a name="SymbolChain"></a>
 ## SymbolChain : <code>string</code>
