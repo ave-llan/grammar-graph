@@ -4,6 +4,8 @@
 <dd></dd>
 <dt><a href="#GuidedDecisionGraph">GuidedDecisionGraph</a></dt>
 <dd></dd>
+<dt><a href="#Recognizer">Recognizer</a></dt>
+<dd></dd>
 </dl>
 ## Typedefs
 <dl>
@@ -30,7 +32,7 @@ choices for this non-terminal.</p>
   * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
-  * [.createRecognizer(start)](#GrammarGraph+createRecognizer) ⇒ <code>Recognizer</code>
+  * [.createRecognizer(start)](#GrammarGraph+createRecognizer) ⇒ <code>[Recognizer](#Recognizer)</code>
 
 <a name="new_GrammarGraph_new"></a>
 ### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
@@ -87,11 +89,11 @@ get a new GuidedDecisionGraph using this decision graph
 | start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
 
 <a name="GrammarGraph+createRecognizer"></a>
-### grammarGraph.createRecognizer(start) ⇒ <code>Recognizer</code>
+### grammarGraph.createRecognizer(start) ⇒ <code>[Recognizer](#Recognizer)</code>
 Returns a new Recognizer from the given start vertex
 
 **Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
-**Returns**: <code>Recognizer</code> - a new Recognizer  
+**Returns**: <code>[Recognizer](#Recognizer)</code> - a new Recognizer  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -213,6 +215,51 @@ guide.choices(3)       =>
   }
 ]
 ```
+<a name="Recognizer"></a>
+## Recognizer
+**Kind**: global class  
+**Seperator**: <code>string\|</code>  
+
+* [Recognizer](#Recognizer)
+  * [new Recognizer(dg, start, [seperator])](#new_Recognizer_new)
+  * [.isValid(text)](#Recognizer+isValid) ⇒ <code>boolean</code>
+  * [.isComplete(text)](#Recognizer+isComplete) ⇒ <code>boolean</code>
+
+<a name="new_Recognizer_new"></a>
+### new Recognizer(dg, start, [seperator])
+create a Recognizer that can test if text is a valid sentence in a grammar
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| dg | <code>DecisionGraph</code> |  | a Decision Graph that defines a grammar |
+| start | <code>string</code> |  | the name of a vertex in the decision graph from which to start the test |
+| [seperator] | <code>string</code> &#124; <code>RegExp</code> | <code>&quot;/\\s+/&quot;</code> | how tokens will be divided in given text |
+
+<a name="Recognizer+isValid"></a>
+### recognizer.isValid(text) ⇒ <code>boolean</code>
+is the text a valid in progress sentence in the grammar? Will return true
+even if the text is not complete.
+
+**Kind**: instance method of <code>[Recognizer](#Recognizer)</code>  
+**Returns**: <code>boolean</code> - is the text valid?  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>string</code> | the text to check |
+
+<a name="Recognizer+isComplete"></a>
+### recognizer.isComplete(text) ⇒ <code>boolean</code>
+is the text a valid and complete text in the grammar? Will return true
+only if the text is complete.
+
+**Kind**: instance method of <code>[Recognizer](#Recognizer)</code>  
+**Returns**: <code>boolean</code> - is the text valid and complete?  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| text | <code>string</code> | the text to check |
+
 <a name="SymbolChain"></a>
 ## SymbolChain : <code>string</code>
 a string of one or more symbol names seperated by whitespace or
