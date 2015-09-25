@@ -1,4 +1,5 @@
-Interactively construct a language from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar).
+Interactively construct a sentence from a [context-free grammar](https://en.wikipedia.org/wiki/Context-free_grammar), or check if some text is a valid sentence in a grammar.
+
 
 ## Create a GrammarGraph
 
