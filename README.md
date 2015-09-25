@@ -169,6 +169,27 @@ guide.construction()    => ['the', 'dog', 'ate', 'the', 'squirrel', 'that', 'att
 guide.complete()        => true
 ```
 
+## GrammarGraph.createRecognizer
+A `Recognizer` can be used to check if some text is a valid sentence in a grammar. Just like when creating a guide, you need to indicate a starting terminal:
+```js
+// (using graph declared before) var graph = new GrammarGraph(grammar)
+var sentence = graph.createRecognizer('Sentence')
+```
+A recognizer can check whether or not a text is a valid and complete construction:
+```js
+sentence.isComplete('the dog ate the cat')                   => true
+sentence.isComplete('the dog ate the cat that')              => false
+sentence.isComplete('the dog ate the cat that orange juice') => false
+```
+
+or whether the text is valid so far (though it may not be complete):
+```js
+sentence.isValid('the dog ate the cat')                      => true
+sentence.isValid('the dog ate the cat that')                 => true
+sentence.isValid('the dog ate the cat that orange juice')    => false
+```
+
+
 ## Grammar
 A context-free grammar is a list of rules.  Here is a grammar with eight rules that builds creatures like this:
 
@@ -230,6 +251,7 @@ Arm Head Arm        // Arm      => ~~
 ~~(-___-) Arm       // Arm      => ~~
 ~~(-___-)~~
 ```
+
 
 ## Docs
 [View the api documentation here.](api.md)
