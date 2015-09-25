@@ -493,6 +493,6 @@ RelativeClause: ['that VerbPhrase'],
 
 | Name | Type | Description |
 | --- | --- | --- |
-| val | <code>PitchString</code> | a pitch string |
+| val | <code>string</code> | a terminal string |
 | next | <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code> | a list of TreeNodes this node links to |
 
