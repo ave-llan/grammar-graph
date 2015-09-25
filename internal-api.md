@@ -347,7 +347,6 @@ guide.choices(3)       =>
 <a name="Recognizer"></a>
 ## Recognizer
 **Kind**: global class  
-**Seperator**: <code>string\|</code>  
 
 * [Recognizer](#Recognizer)
   * [new Recognizer(dg, start, [seperator])](#new_Recognizer_new)
