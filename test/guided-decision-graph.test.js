@@ -32,9 +32,9 @@ test('GuidedDecisionGraph methods', function (t) {
   t.equal(dg.V(), 19)
 
   t.throws(function () {
-      var a = new GuidedDecisionGraph(dg)
-      a // Standard is complaining that a is defined and not used
-    }, Error)
+    var a = new GuidedDecisionGraph(dg)
+    a // Standard is complaining that a is defined and not used
+  }, Error)
 
   var guide = new GuidedDecisionGraph(dg, 'Sentence')
   t.deepEqual(guide.construction(), [])
