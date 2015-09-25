@@ -30,5 +30,15 @@ test('GrammarGraph', function (t) {
   t.true(graph.isTypeAND('loved'))
   t.false(graph.isTypeAND('NounPhrase'))
 
+  var isNoun = graph.createRecognizer('Noun').isComplete
+  t.true(isNoun('cat'))
+  t.true(isNoun('bird'))
+  t.false(isNoun('attacked'))
+
+  var isSentence = graph.createRecognizer('Sentence').isComplete
+  t.true(isSentence('the dog ate'))
+  t.false(isSentence('the dog ate the'))
+  t.true(isSentence('the dog ate the cat'))
+
   t.end()
 })

@@ -30,7 +30,7 @@ choices for this non-terminal.</p>
   * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
   * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
   * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
-  * [.getRecognizer(start)](#GrammarGraph+getRecognizer) ⇒ <code>Recognizer</code>
+  * [.createRecognizer(start)](#GrammarGraph+createRecognizer) ⇒ <code>Recognizer</code>
 
 <a name="new_GrammarGraph_new"></a>
 ### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
@@ -86,13 +86,12 @@ get a new GuidedDecisionGraph using this decision graph
 | --- | --- | --- |
 | start | <code>string</code> | the name of a vertex in the decision graph from which to start the guided expansion |
 
-<a name="GrammarGraph+getRecognizer"></a>
-### grammarGraph.getRecognizer(start) ⇒ <code>Recognizer</code>
-Returns a recognizer function that indicates whether a given text
-is a valid string in the language.
+<a name="GrammarGraph+createRecognizer"></a>
+### grammarGraph.createRecognizer(start) ⇒ <code>Recognizer</code>
+Returns a new Recognizer from the given start vertex
 
 **Kind**: instance method of <code>[GrammarGraph](#GrammarGraph)</code>  
-**Returns**: <code>Recognizer</code> - a new recognizer function  
+**Returns**: <code>Recognizer</code> - a new Recognizer  
 
 | Param | Type | Description |
 | --- | --- | --- |
