@@ -180,6 +180,7 @@ A recognizer can check whether or not a text is a valid and complete constructio
 sentence.isComplete('the dog ate the cat')                   => true
 sentence.isComplete('the dog ate the cat that')              => false
 sentence.isComplete('the dog ate the cat that orange juice') => false
+sentence.isComplete('the dog ate the cat that attacked')     => true
 ```
 
 or whether the text is valid so far (though it may not be complete):
@@ -187,6 +188,7 @@ or whether the text is valid so far (though it may not be complete):
 sentence.isValid('the dog ate the cat')                      => true
 sentence.isValid('the dog ate the cat that')                 => true
 sentence.isValid('the dog ate the cat that orange juice')    => false
+sentence.isValid('the dog ate the cat that attacked')        => true
 ```
 
 
