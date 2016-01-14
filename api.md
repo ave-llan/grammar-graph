@@ -1,4 +1,5 @@
 ## Classes
+
 <dl>
 <dt><a href="#GrammarGraph">GrammarGraph</a></dt>
 <dd></dd>
@@ -7,7 +8,9 @@
 <dt><a href="#Recognizer">Recognizer</a></dt>
 <dd></dd>
 </dl>
+
 ## Typedefs
+
 <dl>
 <dt><a href="#SymbolChain">SymbolChain</a> : <code>string</code></dt>
 <dd><p>a string of one or more symbol names seperated by whitespace or
@@ -22,17 +25,18 @@ choices for this non-terminal.</p>
 <dt><a href="#TreeNode">TreeNode</a> : <code>object</code></dt>
 <dd></dd>
 </dl>
+
 <a name="GrammarGraph"></a>
 ## GrammarGraph
 **Kind**: global class  
 
 * [GrammarGraph](#GrammarGraph)
-  * [new GrammarGraph(grammar, [seperator], [epsilonSymbol])](#new_GrammarGraph_new)
-  * [.vertices()](#GrammarGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
-  * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
-  * [.createRecognizer(start)](#GrammarGraph+createRecognizer) ⇒ <code>[Recognizer](#Recognizer)</code>
+    * [new GrammarGraph(grammar, [seperator], [epsilonSymbol])](#new_GrammarGraph_new)
+    * [.vertices()](#GrammarGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
+    * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+    * [.createRecognizer(start)](#GrammarGraph+createRecognizer) ⇒ <code>[Recognizer](#Recognizer)</code>
 
 <a name="new_GrammarGraph_new"></a>
 ### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
@@ -104,13 +108,13 @@ Returns a new Recognizer from the given start vertex
 **Kind**: global class  
 
 * [GuidedDecisionGraph](#GuidedDecisionGraph)
-  * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
-  * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.isComplete()](#GuidedDecisionGraph+isComplete) ⇒ <code>boolean</code>
-  * [.choose(terminal)](#GuidedDecisionGraph+choose)
-  * [.constructs()](#GuidedDecisionGraph+constructs) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
-  * [.choices([nDeep])](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code>
+    * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
+    * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.isComplete()](#GuidedDecisionGraph+isComplete) ⇒ <code>boolean</code>
+    * [.choose(terminal)](#GuidedDecisionGraph+choose)
+    * [.constructs()](#GuidedDecisionGraph+constructs) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
+    * [.choices([nDeep])](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code>
 
 <a name="new_GuidedDecisionGraph_new"></a>
 ### new GuidedDecisionGraph(dg, start)
@@ -220,9 +224,9 @@ guide.choices(3)       =>
 **Kind**: global class  
 
 * [Recognizer](#Recognizer)
-  * [new Recognizer(dg, start, [seperator])](#new_Recognizer_new)
-  * [.isValid(text)](#Recognizer+isValid) ⇒ <code>boolean</code>
-  * [.isComplete(text)](#Recognizer+isComplete) ⇒ <code>boolean</code>
+    * [new Recognizer(dg, start, [seperator])](#new_Recognizer_new)
+    * [.isValid(text)](#Recognizer+isValid) ⇒ <code>boolean</code>
+    * [.isComplete(text)](#Recognizer+isComplete) ⇒ <code>boolean</code>
 
 <a name="new_Recognizer_new"></a>
 ### new Recognizer(dg, start, [seperator])

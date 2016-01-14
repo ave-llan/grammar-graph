@@ -1,4 +1,5 @@
 ## Classes
+
 <dl>
 <dt><a href="#DecisionGraph">DecisionGraph</a></dt>
 <dd></dd>
@@ -9,8 +10,13 @@
 <dt><a href="#Recognizer">Recognizer</a></dt>
 <dd></dd>
 </dl>
+
 ## Functions
+
 <dl>
+<dt><a href="#noSelfDefinitions">noSelfDefinitions(grammar, returns)</a></dt>
+<dd><p>check a grammar for direct self-loops</p>
+</dd>
 <dt><a href="#parseGrammar">parseGrammar(grammar, [seperator])</a> ⇒ <code><a href="#DecisionGraph">DecisionGraph</a></code></dt>
 <dd><p>parse a grammar given as an object and compile it into a decision graph</p>
 </dd>
@@ -24,7 +30,9 @@ more than one choice will either be a single AND-rule or a single terminal.</p>
 Will not work if the object or array contains non-primitives.</p>
 </dd>
 </dl>
+
 ## Typedefs
+
 <dl>
 <dt><a href="#SymbolChain">SymbolChain</a> : <code>string</code></dt>
 <dd><p>a string of one or more symbol names seperated by whitespace or
@@ -39,21 +47,22 @@ choices for this non-terminal.</p>
 <dt><a href="#TreeNode">TreeNode</a> : <code>object</code></dt>
 <dd></dd>
 </dl>
+
 <a name="DecisionGraph"></a>
 ## DecisionGraph
 **Kind**: global class  
 
 * [DecisionGraph](#DecisionGraph)
-  * [new DecisionGraph()](#new_DecisionGraph_new)
-  * [.addVertexAND(name)](#DecisionGraph+addVertexAND)
-  * [.addVertexOR(name)](#DecisionGraph+addVertexOR)
-  * [.addEdge(v, w)](#DecisionGraph+addEdge)
-  * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
-  * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
-  * [.isVertex(v)](#DecisionGraph+isVertex) ⇒ <code>boolean</code>
-  * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
-  * [.vertices()](#DecisionGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
+    * [new DecisionGraph()](#new_DecisionGraph_new)
+    * [.addVertexAND(name)](#DecisionGraph+addVertexAND)
+    * [.addVertexOR(name)](#DecisionGraph+addVertexOR)
+    * [.addEdge(v, w)](#DecisionGraph+addEdge)
+    * [.adj(v)](#DecisionGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.V()](#DecisionGraph+V) ⇒ <code>number</code>
+    * [.isTerminal(v)](#DecisionGraph+isTerminal) ⇒ <code>boolean</code>
+    * [.isVertex(v)](#DecisionGraph+isVertex) ⇒ <code>boolean</code>
+    * [.isTypeAND(v)](#DecisionGraph+isTypeAND) ⇒ <code>boolean</code>
+    * [.vertices()](#DecisionGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
 
 <a name="new_DecisionGraph_new"></a>
 ### new DecisionGraph()
@@ -156,12 +165,12 @@ get an array of vertex names
 **Kind**: global class  
 
 * [GrammarGraph](#GrammarGraph)
-  * [new GrammarGraph(grammar, [seperator], [epsilonSymbol])](#new_GrammarGraph_new)
-  * [.vertices()](#GrammarGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
-  * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
-  * [.createRecognizer(start)](#GrammarGraph+createRecognizer) ⇒ <code>[Recognizer](#Recognizer)</code>
+    * [new GrammarGraph(grammar, [seperator], [epsilonSymbol])](#new_GrammarGraph_new)
+    * [.vertices()](#GrammarGraph+vertices) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.adj(v)](#GrammarGraph+adj) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.isTypeAND(v)](#GrammarGraph+isTypeAND) ⇒ <code>boolean</code>
+    * [.createGuide(start)](#GrammarGraph+createGuide) ⇒ <code>[GuidedDecisionGraph](#GuidedDecisionGraph)</code>
+    * [.createRecognizer(start)](#GrammarGraph+createRecognizer) ⇒ <code>[Recognizer](#Recognizer)</code>
 
 <a name="new_GrammarGraph_new"></a>
 ### new GrammarGraph(grammar, [seperator], [epsilonSymbol])
@@ -233,13 +242,13 @@ Returns a new Recognizer from the given start vertex
 **Kind**: global class  
 
 * [GuidedDecisionGraph](#GuidedDecisionGraph)
-  * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
-  * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.isComplete()](#GuidedDecisionGraph+isComplete) ⇒ <code>boolean</code>
-  * [.choose(terminal)](#GuidedDecisionGraph+choose)
-  * [.constructs()](#GuidedDecisionGraph+constructs) ⇒ <code>Array.&lt;string&gt;</code>
-  * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
-  * [.choices([nDeep])](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code>
+    * [new GuidedDecisionGraph(dg, start)](#new_GuidedDecisionGraph_new)
+    * [.construction()](#GuidedDecisionGraph+construction) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.isComplete()](#GuidedDecisionGraph+isComplete) ⇒ <code>boolean</code>
+    * [.choose(terminal)](#GuidedDecisionGraph+choose)
+    * [.constructs()](#GuidedDecisionGraph+constructs) ⇒ <code>Array.&lt;string&gt;</code>
+    * [.pop()](#GuidedDecisionGraph+pop) ⇒ <code>string</code>
+    * [.choices([nDeep])](#GuidedDecisionGraph+choices) ⇒ <code>Array.&lt;string&gt;</code> &#124; <code>[Array.&lt;TreeNode&gt;](#TreeNode)</code>
 
 <a name="new_GuidedDecisionGraph_new"></a>
 ### new GuidedDecisionGraph(dg, start)
@@ -349,9 +358,9 @@ guide.choices(3)       =>
 **Kind**: global class  
 
 * [Recognizer](#Recognizer)
-  * [new Recognizer(dg, start, [seperator])](#new_Recognizer_new)
-  * [.isValid(text)](#Recognizer+isValid) ⇒ <code>boolean</code>
-  * [.isComplete(text)](#Recognizer+isComplete) ⇒ <code>boolean</code>
+    * [new Recognizer(dg, start, [seperator])](#new_Recognizer_new)
+    * [.isValid(text)](#Recognizer+isValid) ⇒ <code>boolean</code>
+    * [.isComplete(text)](#Recognizer+isComplete) ⇒ <code>boolean</code>
 
 <a name="new_Recognizer_new"></a>
 ### new Recognizer(dg, start, [seperator])
@@ -387,6 +396,21 @@ only if the text is complete.
 | Param | Type | Description |
 | --- | --- | --- |
 | text | <code>string</code> | the text to check |
+
+<a name="noSelfDefinitions"></a>
+## noSelfDefinitions(grammar, returns)
+check a grammar for direct self-loops
+
+**Kind**: global function  
+**Throws**:
+
+- an error if one definition of a nonterminal is exactly the nonterminal itself
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| grammar | <code>object</code> | the grammar to check |
+| returns | <code>true</code> | true if no errors |
 
 <a name="parseGrammar"></a>
 ## parseGrammar(grammar, [seperator]) ⇒ <code>[DecisionGraph](#DecisionGraph)</code>
