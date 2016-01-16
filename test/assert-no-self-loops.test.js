@@ -15,5 +15,26 @@ test('assertNoSelfLoops', function (t) {
 
   t.true(assertNoSelfLoops(grammar))
 
+  var g2 = {
+    grammar: ['something else', 'grammar', 'another thing']
+  }
+
+  t.throws(function () {
+    assertNoSelfLoops(g2)
+  })
+
+  var g3 = {
+    grammar: ['something else', '2342', 'another thing'],
+    lottery: ['winner', 'loser', 'lottery winner']
+  }
+
+  t.true(assertNoSelfLoops(g3))
+
+  g3.paper = ['water', 'scissors', 'paper', 'rock']
+
+  t.throws(function () {
+    assertNoSelfLoops(g3)
+  })
+
   t.end()
 })
