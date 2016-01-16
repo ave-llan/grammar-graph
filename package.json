@@ -1,6 +1,6 @@
 {
   "name": "grammar-graph",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Takes a context-free grammar and converts it into a decision-making graph. Can produce interactive Guides which generate valid sentences from the grammar.",
   "main": "./lib/grammar-graph.js",
   "directories": {
