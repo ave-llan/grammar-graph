@@ -4,12 +4,12 @@ var GuidedDecisionGraph = require('../lib/guided-decision-graph.js')
 
 test('GrammarGraph', function (t) {
   var g = {
-    Sentence: ['NounPhrase VerbPhrase'],
-    NounPhrase: ['the Noun', 'the Noun RelativeClause'],
-    VerbPhrase: ['Verb', 'Verb NounPhrase'],
-    RelativeClause: ['that VerbPhrase'],
-    Noun: ['dog', 'cat', 'bird', 'squirrel'],
-    Verb: ['befriended', 'loved', 'ate', 'attacked']
+    Sentence       : ['NounPhrase VerbPhrase'],
+    NounPhrase     : ['the Noun', 'the Noun RelativeClause'],
+    VerbPhrase     : ['Verb', 'Verb NounPhrase'],
+    RelativeClause : ['that VerbPhrase'],
+    Noun           : ['dog', 'cat', 'bird', 'squirrel'],
+    Verb           : ['befriended', 'loved', 'ate', 'attacked']
   }
 
   var graph = new GrammarGraph(g)

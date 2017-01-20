@@ -12,9 +12,9 @@
             { "ArrayExpression": "first" }
         ],
         "key-spacing": [
-            2,
+            1,
             { "align": {
-                "beforeColon": false,
+                "beforeColon": true,
                 "afterColon": true,
                 "on": "colon",
                 "mode": "strict"

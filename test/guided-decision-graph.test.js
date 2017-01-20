@@ -135,12 +135,12 @@ test('GuidedDecisionGraph methods', function (t) {
 
 test('GuidedDecisionGraph nDeep choices and multiple .choose()', function (t) {
   var g = {
-    Sentence: ['NounPhrase VerbPhrase'],
-    NounPhrase: ['the Noun', 'the Noun RelativeClause'],
-    VerbPhrase: ['Verb', 'Verb NounPhrase'],
-    RelativeClause: ['that VerbPhrase'],
-    Noun: ['dog', 'cat', 'bird', 'squirrel'],
-    Verb: ['befriended', 'loved', 'ate', 'attacked']
+    Sentence       : ['NounPhrase VerbPhrase'],
+    NounPhrase     : ['the Noun', 'the Noun RelativeClause'],
+    VerbPhrase     : ['Verb', 'Verb NounPhrase'],
+    RelativeClause : ['that VerbPhrase'],
+    Noun           : ['dog', 'cat', 'bird', 'squirrel'],
+    Verb           : ['befriended', 'loved', 'ate', 'attacked']
   }
   var graph = new GrammarGraph(g)
   var guide = graph.createGuide('Sentence')
@@ -148,12 +148,13 @@ test('GuidedDecisionGraph nDeep choices and multiple .choose()', function (t) {
   t.deepEqual(guide.choices(), ['the'])
   t.deepEqual(guide.choices(1), ['the'])
   t.deepEqual(guide.choices(2),
-    [ { val: 'the',
-      next: [ { val: 'squirrel', next: [] },
+    [
+      { val  : 'the',
+        next : [ { val: 'squirrel', next: [] },
               { val: 'bird', next: [] },
               { val: 'cat', next: [] },
               { val: 'dog', next: [] }
-            ]
+        ]
       }
     ])
 
@@ -162,20 +163,21 @@ test('GuidedDecisionGraph nDeep choices and multiple .choose()', function (t) {
 
   t.deepEqual(guide.choices(3),
     [
-      { val: 'the',
-        next: [ { val: 'squirrel',
-                 next: [ { val: 'that', next: [] } ]
-                },
-                { val: 'bird',
-                 next: [ { val: 'that', next: [] } ]
-                },
-                { val: 'cat',
-                 next: [ { val: 'that', next: [] } ]
-                },
-                { val: 'dog',
-                 next: [ { val: 'that', next: [] } ]
-                }
-              ]
+      { val  : 'the',
+        next : [
+          { val  : 'squirrel',
+            next : [ { val: 'that', next: [] } ]
+          },
+          { val  : 'bird',
+            next : [ { val: 'that', next: [] } ]
+          },
+          { val  : 'cat',
+            next : [ { val: 'that', next: [] } ]
+          },
+          { val  : 'dog',
+            next : [ { val: 'that', next: [] } ]
+          }
+        ]
       }
     ])
 

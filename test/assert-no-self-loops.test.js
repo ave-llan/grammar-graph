@@ -4,12 +4,12 @@ var reduceGrammar = require('../lib/reduce-grammar.js')
 
 test('assertNoSelfLoops', function (t) {
   var g = {
-    Sentence: ['NounPhrase VerbPhrase'],
-    NounPhrase: ['the Noun', 'the Noun RelativeClause'],
-    VerbPhrase: ['Verb', 'Verb NounPhrase'],
-    RelativeClause: ['that VerbPhrase'],
-    Noun: ['dog', 'cat', 'bird', 'squirrel'],
-    Verb: ['befriended', 'loved', 'ate', 'attacked']
+    Sentence       : ['NounPhrase VerbPhrase'],
+    NounPhrase     : ['the Noun', 'the Noun RelativeClause'],
+    VerbPhrase     : ['Verb', 'Verb NounPhrase'],
+    RelativeClause : ['that VerbPhrase'],
+    Noun           : ['dog', 'cat', 'bird', 'squirrel'],
+    Verb           : ['befriended', 'loved', 'ate', 'attacked']
   }
   var grammar = reduceGrammar(g)
 
@@ -24,8 +24,8 @@ test('assertNoSelfLoops', function (t) {
   })
 
   var g3 = {
-    grammar: ['something else', '2342', 'another thing'],
-    lottery: ['winner', 'loser', 'lottery winner']
+    grammar : ['something else', '2342', 'another thing'],
+    lottery : ['winner', 'loser', 'lottery winner']
   }
 
   t.true(assertNoSelfLoops(g3))
