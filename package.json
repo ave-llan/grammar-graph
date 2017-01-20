@@ -8,7 +8,7 @@
     "test": "./test"
   },
   "scripts": {
-    "test": "eslint && tape \"test/**/*.test.js\" | faucet",
+    "test": "eslint lib test && tape \"test/**/*.test.js\" | faucet",
     "docs": "jsdoc2md lib/grammar-graph.js lib/guided-decision-graph.js lib/recognizer.js > api.md && jsdoc2md \"lib/**/*.js\" > internal-api.md",
     "preversion": "npm test",
     "postversion": "git push"
